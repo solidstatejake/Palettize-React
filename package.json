@@ -8,7 +8,7 @@
     "react-scripts": "3.0.1"
   },
   "scripts": {
-    "compile:sass": "node-sass ./public/stylesheets/sass/main.scss ./public/stylesheets/css/main.css -w",
+    "compile:sass": "node-sass ./src/stylesheets/sass/main.scss ./src/stylesheets/css/main.css -w",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

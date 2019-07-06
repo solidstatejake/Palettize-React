@@ -1,0 +1,26 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; }
+
+html {
+  font-size: 62.5%; }
+
+body {
+  box-sizing: border-box; }
+
+.Palette {
+  height: 100vh; }
+  .Palette__colors {
+    height: 90%; }
+
+.ColorBox {
+  cursor: pointer;
+  display: inline-block;
+  font-size: 1.6rem;
+  height: 25%;
+  margin: 0 auto;
+  position: relative;
+  width: 20%; }
