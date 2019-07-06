@@ -1,34 +1,56 @@
 .ColorBox {
-  cursor: pointer;
-  display: inline-block;
-  font-size: 1.6rem;
-  height: 25%;
-  margin: 0 auto;
-  position: relative;
-  width: 20%;
+  cursor:                pointer;
+  display:               grid;
+  font-size:             1rem;
+  grid-template-rows:    17rem 3rem;
+  grid-template-columns: 12rem 8rem;
+  grid-template-areas:   "copy ." "title more";
+  height:                20rem;
+  letter-spacing:        .2rem;
+  text-transform:        uppercase;
+  width:                 20rem;
 
   &__copy--container {
-
   }
 
   &__content {
 
     &--color-name {
-
+      grid-area:   title;
+      margin-left: 1rem;
     }
   }
 
   &__button {
 
-    &--copy{
-      width: 10rem;
-      height: 3rem;
-      position:absolute;
-      display: inline-block
+    &--copy {
+      background-color: rgba(255, 255, 255, 0.3);
+      border:           none;
+      color:            white;
+      cursor:           pointer;
+      grid-area:        copy;
+      height:           3rem;
+      opacity:          0;
+      place-self:       center;
+      position:         absolute;
+      text-transform:   uppercase;
+      width:            10rem;
     }
 
     &--see-more {
+      background-color: rgba(255, 255, 255, 0.3);
+      border:           none;
+      color:            white;
+      grid-area:    more;
+      justify-self: end;
+      width: 6rem;
+    }
+  }
 
+  &:hover { //Make copy button appear when box is hovered
+    .ColorBox__button--copy {
+      opacity:    1;
+      transition: 0.2s ease-in;
     }
   }
 }

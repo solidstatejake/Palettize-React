@@ -11,21 +11,46 @@ html {
 body {
   box-sizing: border-box; }
 
-.Palette {
-  height: 100vh; }
-  .Palette__colors {
-    height: 90%; }
+.Palette__colors {
+  align-content: center;
+  display: grid;
+  grid-template-columns: 20rem 20rem 20rem 20rem 20rem;
+  height: 100vh;
+  justify-content: center; }
 
 .ColorBox {
   cursor: pointer;
-  display: inline-block;
-  font-size: 1.6rem;
-  height: 25%;
-  margin: 0 auto;
-  position: relative;
-  width: 20%; }
+  display: grid;
+  font-size: 1rem;
+  grid-template-rows: 17rem 3rem;
+  grid-template-columns: 12rem 8rem;
+  grid-template-areas: "copy ." "title more";
+  height: 20rem;
+  letter-spacing: .2rem;
+  text-transform: uppercase;
+  width: 20rem; }
+  .ColorBox__content--color-name {
+    grid-area: title;
+    margin-left: 1rem; }
   .ColorBox__button--copy {
-    width: 10rem;
+    background-color: rgba(255, 255, 255, 0.3);
+    border: none;
+    color: white;
+    cursor: pointer;
+    grid-area: copy;
     height: 3rem;
+    opacity: 0;
+    place-self: center;
     position: absolute;
-    display: inline-block; }
+    text-transform: uppercase;
+    width: 10rem; }
+  .ColorBox__button--see-more {
+    background-color: rgba(255, 255, 255, 0.3);
+    border: none;
+    color: white;
+    grid-area: more;
+    justify-self: end;
+    width: 6rem; }
+  .ColorBox:hover .ColorBox__button--copy {
+    opacity: 1;
+    transition: 0.2s ease-in; }

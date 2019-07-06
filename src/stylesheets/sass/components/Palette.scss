@@ -1,7 +1,11 @@
 .Palette {
-  height: 100vh;
 
   &__colors {
-    height: 90%
+    align-content:         center;
+    display:               grid;
+    grid-template-columns: 20rem 20rem 20rem 20rem 20rem;
+    height:                100vh;
+    justify-content:       center;
   }
+
 }
