@@ -6,4 +6,29 @@
   margin: 0 auto;
   position: relative;
   width: 20%;
+
+  &__copy--container {
+
+  }
+
+  &__content {
+
+    &--color-name {
+
+    }
+  }
+
+  &__button {
+
+    &--copy{
+      width: 10rem;
+      height: 3rem;
+      position:absolute;
+      display: inline-block
+    }
+
+    &--see-more {
+
+    }
+  }
 }
