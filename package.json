@@ -1,5 +1,5 @@
 {
-  "name": "palletize",
+  "name": "palettize",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -8,6 +8,7 @@
     "react-scripts": "3.0.1"
   },
   "scripts": {
+    "compile:sass": "node-sass ./public/stylesheets/sass/main.scss ./public/stylesheets/css/main.css -w",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -27,5 +28,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "node-sass": "^4.12.0"
   }
 }
