@@ -99,16 +99,17 @@ body {
     justify-content: space-between; }
   .NavBar__logo--container {
     font-size: 3.5rem;
-    margin-left: 4rem; }
+    text-align: center;
+    width: 20rem; }
   .NavBar__logo--text:link, .NavBar__logo--text:visited {
     font-family: "Pacifico", cursive;
     text-decoration: none;
     color: whitesmoke; }
   .NavBar__slider {
-    width: 60rem; }
+    width: 40rem; }
 
 .rc-slider-track {
-  background-color: #b83a3a; }
+  background-color: #B83A3A; }
 
 .rc-slider-rail {
   background-color: black; }
@@ -117,10 +118,33 @@ body {
 .rc-slider-handle:active,
 .rc-slider-handle:focus,
 .rc-slider-handle:hover {
-  background-color: #ed5858;
+  background-color: #ED5858;
   border: none;
   box-shadow: none;
   height: 3rem;
   margin-top: -1.35rem;
   outline: none;
   width: 3rem; }
+
+.DropDown {
+  background-color: gray;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1.6rem;
+  height: 4rem;
+  line-height: 4rem;
+  text-align: center;
+  width: 20rem; }
+  .DropDown__menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; }
+    .DropDown__menu--item {
+      width: 18rem;
+      background: white;
+      z-index: 1; }
+      .DropDown__menu--item:not(:last-child) {
+        border-bottom: 1px solid gray; }
+      .DropDown__menu--item:hover {
+        background-color: #B8B8B8; }
