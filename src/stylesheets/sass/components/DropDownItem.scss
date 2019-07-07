@@ -1,5 +1,5 @@
 .DropDownItem {
-  background: white;
+  background: #fde830;
   width: 18rem;
   z-index: 1;
 
@@ -8,6 +8,7 @@
   }
 
   &:hover {
-    background-color: #B8B8B8;
+    background-color: orange;
   }
 }
+

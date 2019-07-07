@@ -127,7 +127,7 @@ body {
   width: 3rem; }
 
 .DropDown {
-  background-color: gray;
+  background-color: #ed5858;
   border-radius: 4px;
   cursor: pointer;
   font-size: 1.6rem;
@@ -142,10 +142,10 @@ body {
     justify-content: center; }
 
 .DropDownItem {
-  background: white;
+  background: #fde830;
   width: 18rem;
   z-index: 1; }
   .DropDownItem:not(:last-child) {
     border-bottom: 1px solid gray; }
   .DropDownItem:hover {
-    background-color: #B8B8B8; }
+    background-color: orange; }

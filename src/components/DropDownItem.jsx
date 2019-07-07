@@ -14,7 +14,7 @@ class DropDownItem extends Component {
     return (
       <div
         className="DropDownItem"
-        style={displayedFormat === formatType ? {backgroundColor: "#ABABAB"} : {}}
+        style={displayedFormat === formatType ? {backgroundColor: "orange"} : {}}
         onClick={ () => {
           this.props.changeFormat(formatType);
           this.props.displayMenu()
