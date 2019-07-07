@@ -8,7 +8,7 @@ const SliderWithTooltip = createSliderWithTooltip(Slider);
 class NavBar extends Component {
 
   render() {
-    const level = this.props.level;
+    const {level, displayedFormat }= this.props;
     const handleSliderChange = this.props.handleSliderChange;
     const handleFormatChange = this.props.handleFormatChange;
     return (
@@ -26,7 +26,7 @@ class NavBar extends Component {
               onChange={ (value) => handleSliderChange(value) }
             />
           </div>
-          <DropDown handleFormatChange={handleFormatChange} />
+          <DropDown handleFormatChange={handleFormatChange} displayedFormat={displayedFormat} />
         </div>
       </header>
     );

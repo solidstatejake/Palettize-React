@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import DropDownItem from "./DropDownItem";
 
 class DropDown extends Component {
   constructor(props) {
@@ -9,6 +10,7 @@ class DropDown extends Component {
     };
 
     this.displayMenu = this.displayMenu.bind(this);
+    this.changeFormat = this.changeFormat.bind(this);
   }
 
   displayMenu() {
@@ -20,31 +22,21 @@ class DropDown extends Component {
   }
 
   render() {
+    const formatTypes = [ 'HEX', 'RGB', 'RGBA' ];
+    const dropDownItems = formatTypes.map((type) => {
+      return <DropDownItem
+        formatType={ type }
+        changeFormat={ this.changeFormat }
+        displayMenu={ this.displayMenu }
+        displayedFormat={ this.props.displayedFormat }
+      />
+    });
     return (
       <div className="DropDown">
         <div className="DropDown__text" onClick={ this.displayMenu }>Color Format</div>
         { this.state.displayMenu &&
         <div className="DropDown__menu">
-          <div className="DropDown__menu--item" onClick={ () => {
-            this.changeFormat("HEX");
-            this.displayMenu()
-          } }>
-            HEX
-          </div>
-          <div className="DropDown__menu--item"
-               onClick={ () => {
-                 this.changeFormat("RGB");
-                 this.displayMenu()
-               } }>
-            RGB
-          </div>
-          <div className="DropDown__menu--item"
-               onClick={ () => {
-                 this.changeFormat("RGBA");
-                 this.displayMenu()
-               } }>
-            RGBA
-          </div>
+          { dropDownItems }
         </div>
         }
       </div>

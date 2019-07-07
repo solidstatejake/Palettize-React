@@ -1,0 +1,13 @@
+.DropDownItem {
+  background: white;
+  width: 18rem;
+  z-index: 1;
+
+  &:not(:last-child) {
+    border-bottom: 1px solid gray;
+  }
+
+  &:hover {
+    background-color: #B8B8B8;
+  }
+}

@@ -25,7 +25,7 @@ class Palette extends Component {
       case "HEX":
         return colorObject.hex;
       case "RGB":
-       return colorObject.rgb;
+        return colorObject.rgb;
       case "RGBA":
         return colorObject.rgba;
       default:
@@ -39,8 +39,9 @@ class Palette extends Component {
     const colorBoxes = colors[ `${level}` ].map(color => {
       const backgroundFormat = this.determineBackgroundFormat(color);
       return <ColorBox
-        background={  backgroundFormat }
-        name={ color.name }/>;
+        background={ backgroundFormat }
+        name={ color.name }
+      />;
     });
 
     return (
@@ -49,6 +50,8 @@ class Palette extends Component {
           level={ level }
           handleSliderChange={ this.handleSliderChange }
           handleFormatChange={ this.handleFormatChange }
+          displayedFormat={ this.state.displayedFormat }
+
         />
         <div className="Palette__colors">
           { colorBoxes }
