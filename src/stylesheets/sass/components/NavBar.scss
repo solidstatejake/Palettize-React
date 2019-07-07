@@ -1,0 +1,59 @@
+.NavBar {
+  align-items:      center;
+  background-color: #444;
+  display:          flex;
+  flex-direction:   row;
+  height:           10rem;
+  justify-content:  center;
+
+  &__container {
+    display:         flex;
+    flex-direction:  row;
+    align-items:     center;
+    width:           100rem;
+    justify-content: space-between;
+  }
+
+  &__logo {
+    &--container {
+      font-size:   3.5rem;
+      margin-left: 4rem;
+    }
+
+    &--text {
+
+      &:link,
+      &:visited {
+        font-family:     "Pacifico", cursive;
+        text-decoration: none;
+        color:           whitesmoke;
+      }
+
+    }
+  }
+
+  &__slider {
+    width: 60rem;
+  }
+}
+
+.rc-slider-track {
+  background-color: #b83a3a;
+}
+
+.rc-slider-rail {
+  background-color: black;
+}
+
+.rc-slider-handle,
+.rc-slider-handle:active,
+.rc-slider-handle:focus,
+.rc-slider-handle:hover {
+  background-color: #ed5858;
+  border:           none;
+  box-shadow:       none;
+  height:           3rem;
+  margin-top:       -1.35rem;
+  outline:          none;
+  width:            3rem;
+}

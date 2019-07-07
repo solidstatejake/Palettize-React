@@ -1,21 +1,18 @@
 import React, { Component } from 'react';
 import ColorBox from "./ColorBox";
-import Slider, {createSliderWithTooltip} from 'rc-slider';
-import 'rc-slider/assets/index.css';
-
-const SliderWithTooltip = createSliderWithTooltip(Slider);
+import NavBar from "./NavBar";
 
 class Palette extends Component {
   constructor(props) {
-      super(props);
-      this.state = { level: 400};
+    super(props);
+    this.state = { level: 400 };
 
-      this.handleSliderChange = this.handleSliderChange.bind(this);
+    this.handleSliderChange = this.handleSliderChange.bind(this);
   }
 
 
   handleSliderChange(value) {
-    this.setState({level: value })
+    this.setState({ level: value })
   }
 
   render() {
@@ -27,14 +24,7 @@ class Palette extends Component {
 
     return (
       <div className="Palette">
-        <SliderWithTooltip
-          min={100}
-          max={900}
-          step={100}
-          defaultValue={level}
-          onChange={(value) => this.handleSliderChange(value)}
-          railStyle={{width: '100rem', margin: '0 auto'}}
-        />
+        <NavBar level={level} handleSliderChange={this.handleSliderChange}/>
         <div className="Palette__colors">
           { colorBoxes }
         </div>

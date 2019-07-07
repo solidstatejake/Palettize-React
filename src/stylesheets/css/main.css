@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css?family=Pacifico&display=swap");
 *,
 *::after,
 *::before {
@@ -9,15 +10,17 @@ html {
   font-size: 62.5%; }
 
 body {
-  box-sizing: border-box;
-  overflow: hidden; }
+  background-color: #333;
+  box-sizing: border-box; }
 
-.Palette__colors {
-  align-content: center;
+.Palette {
   display: grid;
-  grid-template-columns: 20rem 20rem 20rem 20rem 20rem;
-  height: 100vh;
-  justify-content: center; }
+  grid-template-rows: 13rem auto; }
+  .Palette__colors {
+    align-content: center;
+    display: grid;
+    grid-template-columns: 20rem 20rem 20rem 20rem 20rem;
+    justify-content: center; }
 
 .ColorBox {
   cursor: pointer;
@@ -80,3 +83,44 @@ body {
       top: 50%;
       transform: translate(-50%, -50%);
       z-index: 1001; }
+
+.NavBar {
+  align-items: center;
+  background-color: #444;
+  display: flex;
+  flex-direction: row;
+  height: 10rem;
+  justify-content: center; }
+  .NavBar__container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100rem;
+    justify-content: space-between; }
+  .NavBar__logo--container {
+    font-size: 3.5rem;
+    margin-left: 4rem; }
+  .NavBar__logo--text:link, .NavBar__logo--text:visited {
+    font-family: "Pacifico", cursive;
+    text-decoration: none;
+    color: whitesmoke; }
+  .NavBar__slider {
+    width: 60rem; }
+
+.rc-slider-track {
+  background-color: #b83a3a; }
+
+.rc-slider-rail {
+  background-color: black; }
+
+.rc-slider-handle,
+.rc-slider-handle:active,
+.rc-slider-handle:focus,
+.rc-slider-handle:hover {
+  background-color: #ed5858;
+  border: none;
+  box-shadow: none;
+  height: 3rem;
+  margin-top: -1.35rem;
+  outline: none;
+  width: 3rem; }
