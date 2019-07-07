@@ -20,23 +20,27 @@ class Palette extends Component {
     this.setState({ displayedFormat: formatValue })
   }
 
+  determineBackgroundFormat(colorObject) {
+    switch (this.state.displayedFormat) {
+      case "HEX":
+        return colorObject.hex;
+      case "RGB":
+       return colorObject.rgb;
+      case "RGBA":
+        return colorObject.rgba;
+      default:
+        return colorObject.hex;
+    }
+  }
+
   render() {
-    let backgroundFormat;
     const colors = this.props.palette.colors;
     const level = this.state.level;
     const colorBoxes = colors[ `${level}` ].map(color => {
-      switch (this.state.displayedFormat) {
-        case "HEX":
-          backgroundFormat = color.hex;
-          break;
-        case "RGB":
-          backgroundFormat = color.rgb;
-          break;
-        case "RGBA":
-          backgroundFormat = color.rgba;
-          break;
-      }
-      return <ColorBox background={ backgroundFormat } name={ color.name }/>;
+      const backgroundFormat = this.determineBackgroundFormat(color);
+      return <ColorBox
+        background={  backgroundFormat }
+        name={ color.name }/>;
     });
 
     return (
