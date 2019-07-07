@@ -41,9 +41,9 @@
       background-color: rgba(255, 255, 255, 0.3);
       border:           none;
       color:            white;
-      grid-area:    more;
-      justify-self: end;
-      width: 6rem;
+      grid-area:        more;
+      justify-self:     end;
+      width:            6rem;
     }
   }
 
@@ -51,6 +51,40 @@
     .ColorBox__button--copy {
       opacity:    1;
       transition: 0.2s ease-in;
+    }
+  }
+
+  &__overlay {
+    height:          20rem;
+    opacity:         0;
+    position:        relative;
+    transition:      height .3s;
+    width:           20rem;
+    z-index:         0;
+  }
+
+  &__active {
+    height:   100vh;
+    left:     0;
+    opacity:  1;
+    position: absolute;
+    top:      0;
+    width:    100vw;
+    z-index:  1000;
+
+    &--message {
+
+      &-active {
+        color:       white;
+        font-size:   10rem;
+        left:        50%;
+        position:    absolute;
+        text-shadow: 3px 6px 1px black;
+        text-align:  center;
+        top:         50%;
+        transform:   translate(-50%, -50%);
+        z-index:     1001;
+      }
     }
   }
 }
