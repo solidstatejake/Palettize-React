@@ -21,14 +21,30 @@ class DropDown extends Component {
 
   render() {
     return (
-      <div className="DropDown" >
+      <div className="DropDown">
         <div className="DropDown__text" onClick={ this.displayMenu }>Color Format</div>
         { this.state.displayMenu &&
         <div className="DropDown__menu">
-          <div className="DropDown__menu--item" onClick={() => this.changeFormat("HEX")}>Hex</div>
-          <div className="DropDown__menu--item" onClick={() =>this.changeFormat("RGB")}>rgb</div>
-          <div className="DropDown__menu--item" onClick={() => this.changeFormat("RGBA")}>rgba</div>
-          <div className="DropDown__menu--item">Name</div>
+          <div className="DropDown__menu--item" onClick={ () => {
+            this.changeFormat("HEX");
+            this.displayMenu()
+          } }>
+            HEX
+          </div>
+          <div className="DropDown__menu--item"
+               onClick={ () => {
+                 this.changeFormat("RGB");
+                 this.displayMenu()
+               } }>
+            RGB
+          </div>
+          <div className="DropDown__menu--item"
+               onClick={ () => {
+                 this.changeFormat("RGBA");
+                 this.displayMenu()
+               } }>
+            RGBA
+          </div>
         </div>
         }
       </div>
