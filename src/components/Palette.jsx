@@ -53,9 +53,11 @@ class Palette extends Component {
           displayedFormat={ this.state.displayedFormat }
 
         />
+        <header className='Palette__header'>{this.props.palette.paletteName} {this.props.palette.emoji}</header>
         <div className="Palette__colors">
           { colorBoxes }
         </div>
+
       </div>
     );
   }
