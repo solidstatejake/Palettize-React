@@ -25,14 +25,18 @@ class ColorBox extends Component {
           <div className={ `ColorBox__overlay ${copied && 'ColorBox__active'}` }
                style={ { background } }>
 
-            <div className={`ColorBox__active--message ${copied && 'ColorBox__active--message-active'}`}>
+            <div
+              className={ `ColorBox__active--message ${copied && 'ColorBox__active--message-active'}` }>
               <h1>Copied!</h1>
               <p>{ background }</p>
             </div>
 
           </div>
           <button className="ColorBox__button--copy">Copy</button>
-          <span className='ColorBox__content--color-name'>{ name }</span>
+          <span className='ColorBox__content--color-name'
+                style={ name.length > 18 ? { fontSize: '.8rem' } : {} }>
+            { name }
+            </span>
           <span className='ColorBox__button--see-more'>Shades</span>
         </div>
       </CopyToClipboard>
