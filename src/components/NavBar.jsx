@@ -22,6 +22,7 @@ class NavBar extends Component {
               </div>
             </Link>
           </div>
+          { this.props.displaySlider &&
           <div className="NavBar__slider">
             <SliderWithTooltip
               min={ 100 }
@@ -31,8 +32,11 @@ class NavBar extends Component {
               onChange={ (value) => handleSliderChange(value) }
             />
           </div>
-          <DropDown handleFormatChange={ handleFormatChange }
-                    displayedFormat={ displayedFormat }/>
+          }
+          { this.props.displayDropdown &&
+            <DropDown handleFormatChange={ handleFormatChange }
+                      displayedFormat={ displayedFormat }/>
+          }
         </div>
       </header>
     );

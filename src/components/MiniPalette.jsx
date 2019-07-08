@@ -36,17 +36,24 @@ const styles = {
 
 function MiniPalette(props) {
   const { classes, colors, emoji, id, paletteName } = props;
+  const miniColorBoxes = colors.map(color =>
+    <div
+      key={color.color}
+      className={classes.color_box}
+      style={{background: color.color}}
+    />
+  );
+
   return (
     <div className={ classes.root }>
       <div className={classes.boxes_container}>
-        {colors.map(color => <div className={classes.color_box} style={{background: color.color}}></div>)}
+        {miniColorBoxes}
       </div>
       <div className={classes.palette_title}>
         {paletteName} {emoji}
       </div>
     </div>
   )
-
 }
 
 export default withStyles(styles)(MiniPalette);

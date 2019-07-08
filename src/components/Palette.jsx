@@ -51,7 +51,8 @@ class Palette extends Component {
           handleSliderChange={ this.handleSliderChange }
           handleFormatChange={ this.handleFormatChange }
           displayedFormat={ this.state.displayedFormat }
-
+          displaySlider={true}
+          displayDropdown={true}
         />
         <header className='Palette__header'>{this.props.palette.paletteName} {this.props.palette.emoji}</header>
         <div className="Palette__colors">

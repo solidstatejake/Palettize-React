@@ -1,10 +1,12 @@
 .PaletteList {
-   align-items:           center;
-   display:               grid;
-   grid-gap:              2rem;
-   grid-template-columns: 30rem 30rem 30rem;
-   justify-content:       center;
-
+  &__container {
+    align-items:           center;
+    display:               grid;
+    grid-gap:              2rem;
+    grid-template-columns: 30rem 30rem 30rem;
+    justify-content:       center;
+    padding: 5rem 0;
+  }
    :link,
    :visited {
      box-shadow:      5px 5px 10px black;

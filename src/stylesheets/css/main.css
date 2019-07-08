@@ -156,14 +156,16 @@ body {
   .DropDownItem:hover {
     background-color: orange; }
 
-.PaletteList {
+.PaletteList__container {
   align-items: center;
   display: grid;
   grid-gap: 2rem;
   grid-template-columns: 30rem 30rem 30rem;
-  justify-content: center; }
-  .PaletteList :link,
-  .PaletteList :visited {
-    box-shadow: 5px 5px 10px black;
-    color: black;
-    text-decoration: none; }
+  justify-content: center;
+  padding: 5rem 0; }
+
+.PaletteList :link,
+.PaletteList :visited {
+  box-shadow: 5px 5px 10px black;
+  color: black;
+  text-decoration: none; }
