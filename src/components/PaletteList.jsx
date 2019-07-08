@@ -9,8 +9,8 @@ class PaletteList extends Component {
 
       <div className='PaletteList'>
         { palettes.map(palette => (
-          <Link to={`/palette/${palette.id}`}>
-            <MiniPalette {...palette}/>
+          <Link to={ `/palette/${palette.id}` }>
+            <MiniPalette { ...palette }/>
           </Link>
 
         )) }

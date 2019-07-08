@@ -164,5 +164,6 @@ body {
   justify-content: center; }
   .PaletteList :link,
   .PaletteList :visited {
+    box-shadow: 5px 5px 10px black;
     color: black;
     text-decoration: none; }

@@ -9,7 +9,7 @@ const SliderWithTooltip = createSliderWithTooltip(Slider);
 class NavBar extends Component {
 
   render() {
-    const {level, displayedFormat }= this.props;
+    const { level, displayedFormat } = this.props;
     const handleSliderChange = this.props.handleSliderChange;
     const handleFormatChange = this.props.handleFormatChange;
     return (
@@ -17,7 +17,9 @@ class NavBar extends Component {
         <div className="NavBar__container">
           <div className="NavBar__logo--container">
             <Link to='/'>
-              <div className="NavBar__logo--text" style={{color: `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255})` }}>Palettize</div>
+              <div className="NavBar__logo--text"
+                   style={ { color: `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255})` } }>Palettize
+              </div>
             </Link>
           </div>
           <div className="NavBar__slider">
@@ -29,7 +31,8 @@ class NavBar extends Component {
               onChange={ (value) => handleSliderChange(value) }
             />
           </div>
-          <DropDown handleFormatChange={handleFormatChange} displayedFormat={displayedFormat} />
+          <DropDown handleFormatChange={ handleFormatChange }
+                    displayedFormat={ displayedFormat }/>
         </div>
       </header>
     );

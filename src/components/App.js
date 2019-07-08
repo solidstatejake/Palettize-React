@@ -7,8 +7,8 @@ import '../stylesheets/css/main.css';
 import PaletteList from "./PaletteList";
 
 
-
-{/*<Link to='/palette/flat-ui-colors-dutch'>DUTCHIE</Link>*/}
+{/*<Link to='/palette/flat-ui-colors-dutch'>DUTCHIE</Link>*/
+}
 
 
 class App extends Component {
@@ -27,29 +27,25 @@ class App extends Component {
           <Route
             exact
             path='/'
-            render={ () => <PaletteList palettes={seedColors} /> }
-
+            render={ () => <PaletteList palettes={ seedColors }/> }
           />
-
 
           <Route
             exact
             path='/palette/:id'
             render={ (routeProps) => (
-               <Palette
-                 palette={
-                   generatePalette(this.findPalette(routeProps.match.params.id))
-                 }
-               />
-            )}
+              <Palette
+                palette={
+                  generatePalette(this.findPalette(routeProps.match.params.id))
+                }
+              />
+            ) }
           />
 
 
         </Switch>
       </Router>
-      // <div className="App">
-      //   <Palette palette={ generatePalette(seedColors[ 1 ]) }/>
-      // </div>
+
     );
   }
 }
