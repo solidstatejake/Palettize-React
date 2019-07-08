@@ -12,14 +12,16 @@ class PaletteList extends Component {
           <MiniPalette key={palette.id} { ...palette }/>
         </Link>
       ));
+
     return (
       <div className='PaletteList'>
-        <NavBar />
+        <NavBar displayNewPaletteButton={true}/>
         <div className='PaletteList__container'>
           { miniPalettes }
         </div>
       </div>
     );
+
   }
 }
 
