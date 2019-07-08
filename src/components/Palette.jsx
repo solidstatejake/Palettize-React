@@ -34,17 +34,17 @@ class Palette extends Component {
   }
 
   render() {
-    let {colors, id: paletteId} = this.props.palette;
+    let { colors, id: paletteId } = this.props.palette;
     const level = this.state.level;
     const colorBoxes = colors[ `${level}` ].map(color => {
       const backgroundFormat = this.determineBackgroundFormat(color);
       return <ColorBox
-        key={color.id}
+        key={ color.id }
         id={ color.id }
         paletteId={ paletteId }
         background={ backgroundFormat }
         name={ color.name }
-        displayShadesButton={true}
+        displayShadesButton={ true }
       />;
     });
 
@@ -52,13 +52,16 @@ class Palette extends Component {
       <div className="Palette">
         <NavBar
           level={ level }
+          routeProps={ this.props.routeProps }
+          displayBackButton={ true }
+          displaySlider={ true }
+          displayDropdown={ true }
+          displayedFormat={ this.state.displayedFormat }
           handleSliderChange={ this.handleSliderChange }
           handleFormatChange={ this.handleFormatChange }
-          displayedFormat={ this.state.displayedFormat }
-          displaySlider={true}
-          displayDropdown={true}
         />
-        <header className='Palette__header'>{this.props.palette.paletteName} {this.props.palette.emoji}</header>
+        <header
+          className='Palette__header'>{ this.props.palette.paletteName } { this.props.palette.emoji }</header>
         <div className="Palette__colors">
           { colorBoxes }
         </div>

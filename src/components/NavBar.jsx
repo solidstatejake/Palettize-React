@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Slider, { createSliderWithTooltip } from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import DropDown from "./DropDown";
+import BackButton from "./BackButton";
 
 const SliderWithTooltip = createSliderWithTooltip(Slider);
 
@@ -22,6 +23,11 @@ class NavBar extends Component {
               </div>
             </Link>
           </div>
+
+          { this.props.displayBackButton &&
+          <BackButton routeProps={ this.props.routeProps }/>
+          }
+
           { this.props.displaySlider &&
           <div className="NavBar__slider">
             <SliderWithTooltip
@@ -33,9 +39,10 @@ class NavBar extends Component {
             />
           </div>
           }
+
           { this.props.displayDropdown &&
-            <DropDown handleFormatChange={ handleFormatChange }
-                      displayedFormat={ displayedFormat }/>
+          <DropDown handleFormatChange={ handleFormatChange }
+                    displayedFormat={ displayedFormat }/>
           }
         </div>
       </header>

@@ -39,7 +39,9 @@ class SingleColorPalette extends Component {
   }
 
   render() {
+    const { paletteName, emoji } = this.props.palette;
     const singleColorPalette = this.grabShades();
+    const colorName = singleColorPalette[ 0 ].name.replace('50', '');
     const singleColorBoxes = singleColorPalette.map((colorObject) => {
       const backgroundFormat = this.determineBackgroundFormat(colorObject);
       return <ColorBox
@@ -53,15 +55,23 @@ class SingleColorPalette extends Component {
     return (
       <div className='SingleColorPalette'>
         <NavBar
+          routeProps={ this.props.routeProps }
+          displayBackButton={ true }
           displayDropdown={ true }
           handleFormatChange={ this.handleFormatChange }
           displayedFormat={ this.state.displayedFormat }
         />
-        <header className='SingleColorPalette__header'>{this.props.palette.paletteName} {this.props.palette.emoji}</header>
+        <header className='SingleColorPalette__header'>
+          { paletteName } { emoji }
+          <br/>
+          { colorName }
+        </header>
+        <div className="SingleColorPalette__body">
 
-        <div className='SingleColorPalette__colors'>
+          <div className='SingleColorPalette__colors'>
 
-          { singleColorBoxes }
+            { singleColorBoxes }
+          </div>
         </div>
       </div>
     );
