@@ -34,13 +34,17 @@ class Palette extends Component {
   }
 
   render() {
-    const colors = this.props.palette.colors;
+    let {colors, id: paletteId} = this.props.palette;
     const level = this.state.level;
     const colorBoxes = colors[ `${level}` ].map(color => {
       const backgroundFormat = this.determineBackgroundFormat(color);
       return <ColorBox
+        key={color.id}
+        id={ color.id }
+        paletteId={ paletteId }
         background={ backgroundFormat }
         name={ color.name }
+        displayShadesButton={true}
       />;
     });
 

@@ -18,11 +18,13 @@ class ColorBox extends Component {
   }
 
   render() {
-    const { name, background, id } = this.props;
+    const { name, background, id, paletteId } = this.props;
     const { copied } = this.state;
     return (
       <CopyToClipboard text={ background } onCopy={ this.changeCopyState }>
+
         <div className="ColorBox" style={ { background } }>
+
           <div className={ `ColorBox__overlay ${copied && 'ColorBox__active'}` }
                style={ { background } }>
 
@@ -33,15 +35,22 @@ class ColorBox extends Component {
             </div>
 
           </div>
+
           <button className="ColorBox__button--copy">Copy</button>
+
           <span className='ColorBox__content--color-name'
                 style={ name.length > 18 ? { fontSize: '.8rem' } : {} }>
             { name }
             </span>
-          <Link to={`/`} onClick={e => e.stopPropagation()} className='ColorBox__button--see-more'>
-            <span >Shades</span>
+
+          { this.props.displayShadesButton &&
+          <Link to={ `/palette/${paletteId}/${id}` } onClick={ e => e.stopPropagation() }
+                className='ColorBox__button--see-more'>
+            <span>Shades</span>
           </Link>
+          }
         </div>
+
       </CopyToClipboard>
     );
   }

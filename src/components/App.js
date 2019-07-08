@@ -5,6 +5,7 @@ import seedColors from "../utils/seedColors";
 import { generatePalette } from "../utils/colorHelpers";
 import '../stylesheets/css/main.css';
 import PaletteList from "./PaletteList";
+import SingleColorPalette from "./SingleColorPalette";
 
 
 class App extends Component {
@@ -37,7 +38,18 @@ class App extends Component {
               />
             ) }
           />
-          <Route exact path='/palette/:paletteId/:colorId' render={() => <h1>SHADER</h1>}/>
+
+          <Route
+            exact
+            path='/palette/:paletteId/:colorId'
+            render={(routeProps) => (
+              <SingleColorPalette
+                palette={generatePalette(this.findPalette(routeProps.match.params.paletteId))}
+                routeProps={routeProps}
+              />
+              )
+            }
+          />
 
         </Switch>
       </Router>
