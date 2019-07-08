@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import Slider, { createSliderWithTooltip } from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import DropDown from "./DropDown";
@@ -15,7 +16,9 @@ class NavBar extends Component {
       <header className='NavBar'>
         <div className="NavBar__container">
           <div className="NavBar__logo--container">
-            <a className="NavBar__logo--text" href="#">Palettize</a>
+            <Link to='/'>
+              <div className="NavBar__logo--text" style={{color: `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255})` }}>Palettize</div>
+            </Link>
           </div>
           <div className="NavBar__slider">
             <SliderWithTooltip

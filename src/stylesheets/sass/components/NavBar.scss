@@ -19,17 +19,15 @@
       font-size:  3.5rem;
       text-align: center;
       width:      20rem;
+
+      a {
+        text-decoration: none;
+      }
     }
 
     &--text {
-
-      &:link,
-      &:visited {
         font-family:     "Pacifico", cursive;
         text-decoration: none;
-        color:           whitesmoke;
-      }
-
     }
   }
 

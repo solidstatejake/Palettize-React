@@ -4,6 +4,12 @@ import Palette from "./Palette";
 import seedColors from "../utils/seedColors";
 import { generatePalette } from "../utils/colorHelpers";
 import '../stylesheets/css/main.css';
+import PaletteList from "./PaletteList";
+
+
+
+{/*<Link to='/palette/flat-ui-colors-dutch'>DUTCHIE</Link>*/}
+
 
 class App extends Component {
   findPalette(id) {
@@ -21,7 +27,7 @@ class App extends Component {
           <Route
             exact
             path='/'
-            render={ () => <Link to='/palette/flat-ui-colors-dutch'>DUTCHIE</Link> }
+            render={ () => <PaletteList palettes={seedColors} /> }
 
           />
 

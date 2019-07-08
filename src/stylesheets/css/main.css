@@ -27,12 +27,55 @@ body {
     grid-template-columns: 20rem 20rem 20rem 20rem 20rem;
     justify-content: center; }
 
+.NavBar {
+  align-items: center;
+  background-color: #444;
+  display: flex;
+  flex-direction: row;
+  height: 10rem;
+  justify-content: center; }
+  .NavBar__container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100rem;
+    justify-content: space-between; }
+  .NavBar__logo--container {
+    font-size: 3.5rem;
+    text-align: center;
+    width: 20rem; }
+    .NavBar__logo--container a {
+      text-decoration: none; }
+  .NavBar__logo--text {
+    font-family: "Pacifico", cursive;
+    text-decoration: none; }
+  .NavBar__slider {
+    width: 40rem; }
+
+.rc-slider-track {
+  background-color: #B83A3A; }
+
+.rc-slider-rail {
+  background-color: black; }
+
+.rc-slider-handle,
+.rc-slider-handle:active,
+.rc-slider-handle:focus,
+.rc-slider-handle:hover {
+  background-color: #ED5858;
+  border: none;
+  box-shadow: none;
+  height: 3rem;
+  margin-top: -1.35rem;
+  outline: none;
+  width: 3rem; }
+
 .ColorBox {
   cursor: pointer;
   display: grid;
   font-size: 1rem;
   grid-template-rows: 17rem 3rem;
-  grid-template-columns: 8rem 12rem;
+  grid-template-columns: 13rem 7rem;
   grid-template-areas: "copy ." "title more";
   height: 20rem;
   letter-spacing: .2rem;
@@ -89,48 +132,6 @@ body {
       transform: translate(-50%, -50%);
       z-index: 1001; }
 
-.NavBar {
-  align-items: center;
-  background-color: #444;
-  display: flex;
-  flex-direction: row;
-  height: 10rem;
-  justify-content: center; }
-  .NavBar__container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: 100rem;
-    justify-content: space-between; }
-  .NavBar__logo--container {
-    font-size: 3.5rem;
-    text-align: center;
-    width: 20rem; }
-  .NavBar__logo--text:link, .NavBar__logo--text:visited {
-    font-family: "Pacifico", cursive;
-    text-decoration: none;
-    color: whitesmoke; }
-  .NavBar__slider {
-    width: 40rem; }
-
-.rc-slider-track {
-  background-color: #B83A3A; }
-
-.rc-slider-rail {
-  background-color: black; }
-
-.rc-slider-handle,
-.rc-slider-handle:active,
-.rc-slider-handle:focus,
-.rc-slider-handle:hover {
-  background-color: #ED5858;
-  border: none;
-  box-shadow: none;
-  height: 3rem;
-  margin-top: -1.35rem;
-  outline: none;
-  width: 3rem; }
-
 .DropDown {
   background-color: #ed5858;
   border-radius: 4px;
@@ -154,3 +155,14 @@ body {
     border-bottom: 1px solid gray; }
   .DropDownItem:hover {
     background-color: orange; }
+
+.PaletteList {
+  align-items: center;
+  display: grid;
+  grid-gap: 2rem;
+  grid-template-columns: 30rem 30rem 30rem;
+  justify-content: center; }
+  .PaletteList :link,
+  .PaletteList :visited {
+    color: black;
+    text-decoration: none; }
