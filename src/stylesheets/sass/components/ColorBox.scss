@@ -10,9 +10,6 @@
   text-transform:        uppercase;
   width:                 20rem;
 
-  &__copy--container {
-  }
-
   &__content {
 
     &--color-name {
@@ -43,7 +40,9 @@
       color:            white;
       grid-area:        more;
       justify-self:     end;
+      text-decoration:  none;
       width:            6rem;
+      z-index:          1;
     }
   }
 
