@@ -1,7 +1,6 @@
 .SingleColorPalette {
   display: grid;
   grid-template-rows: 13rem auto;
-  height: 100vh;
 
   &__header {
     color: white;
@@ -17,8 +16,8 @@
     justify-content:       center;
 
     .ColorBox {
-      height: 34rem;
-      grid-template-rows: 32rem 2rem;
+      height: 40rem;
+      grid-template-rows: 37rem 3rem;
     }
   }
 

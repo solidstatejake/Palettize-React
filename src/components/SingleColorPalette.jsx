@@ -5,38 +5,63 @@ import NavBar from "./NavBar";
 class SingleColorPalette extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = { displayedFormat: 'HEX' };
 
     this.grabShades = this.grabShades.bind(this);
+    this.handleFormatChange = this.handleFormatChange.bind(this);
 
   }
 
   grabShades() {
-    const {colors} = this.props.palette;
-    return  Object.keys(colors).map(key => {
-      return colors[key].find(color => {
+    const { colors } = this.props.palette;
+    return Object.keys(colors).map(key => {
+      return colors[ key ].find(color => {
         return color.id === this.props.routeProps.match.params.colorId;
       })
     })
   }
 
+  handleFormatChange(formatValue) {
+    this.setState({ displayedFormat: formatValue })
+  }
+
+  determineBackgroundFormat(colorObject) {
+    switch (this.state.displayedFormat) {
+      case "HEX":
+        return colorObject.hex;
+      case "RGB":
+        return colorObject.rgb;
+      case "RGBA":
+        return colorObject.rgba;
+      default:
+        return colorObject.hex;
+    }
+  }
+
   render() {
     const singleColorPalette = this.grabShades();
     const singleColorBoxes = singleColorPalette.map((colorObject) => {
-        return <ColorBox
-          key={colorObject.hex}
-          id={ colorObject.id }
-          background={ colorObject.hex }
-          name={ colorObject.name }
-        />;
-      });
+      const backgroundFormat = this.determineBackgroundFormat(colorObject);
+      return <ColorBox
+        key={ colorObject.hex }
+        id={ colorObject.id }
+        background={ backgroundFormat }
+        name={ colorObject.name }
+      />;
+    });
 
     return (
       <div className='SingleColorPalette'>
-        <NavBar displayDropdown={true}/>
+        <NavBar
+          displayDropdown={ true }
+          handleFormatChange={ this.handleFormatChange }
+          displayedFormat={ this.state.displayedFormat }
+        />
+        <header className='SingleColorPalette__header'>{this.props.palette.paletteName} {this.props.palette.emoji}</header>
+
         <div className='SingleColorPalette__colors'>
 
-        {singleColorBoxes}
+          { singleColorBoxes }
         </div>
       </div>
     );
