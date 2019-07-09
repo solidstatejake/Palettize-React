@@ -69,11 +69,12 @@ class Palette extends Component {
               onChange={ (value) => this.handleSliderChange(value) }
             />
           </div>
+
           <DropDown handleFormatChange={ this.handleFormatChange }
-                    displayedFormat={ this.state.displayedFormat }/>
+                    displayedFormat={ this.state.displayedFormat }
+          />
         </NavBar>
-        <header
-          className='Palette__header'>{ this.props.palette.paletteName } { this.props.palette.emoji }</header>
+        <header className='Palette__header'>{ this.props.palette.paletteName } { this.props.palette.emoji }</header>
         <div className="Palette__colors">
           { colorBoxes }
         </div>

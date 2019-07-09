@@ -3,7 +3,6 @@ import { ChromePicker } from 'react-color';
 import chroma from 'chroma-js';
 import NavBar from "./NavBar";
 import Drawer from "./Drawer";
-import ColorBox from "./ColorBox";
 import UserColorBox from "./UserColorBox";
 
 class NewPaletteForm extends Component {
@@ -25,17 +24,20 @@ class NewPaletteForm extends Component {
           g: 3,
           b: 3,
           a: 1
-        }
+        },
+        name: ""
       },
       colors: []
     };
+
     this.toggleDrawer = this.toggleDrawer.bind(this);
     this.handleColorPickerChange = this.handleColorPickerChange.bind(this);
+    this.handleColorNameChange = this.handleColorNameChange.bind(this);
     this.randomizeColor = this.randomizeColor.bind(this);
   }
 
   handleColorPickerChange(color) {
-    console.log(color);
+    const name = this.state.currentColor.name;
     this.setState({
       currentColor: {
         hex: color.hex,
@@ -44,9 +46,20 @@ class NewPaletteForm extends Component {
           g: color.rgb.g,
           b: color.rgb.b,
         },
-        rgba: color.rgb
+        rgba: color.rgb,
+        name
       }
     });
+  }
+
+  handleColorNameChange(event) {
+    this.setState({
+      currentColor: {
+        ...this.state.currentColor,
+        name: event.target.value
+      }
+    }
+    )
   }
 
   toggleDrawer() {
@@ -71,11 +84,16 @@ class NewPaletteForm extends Component {
   }
 
   addColor(newColor) {
-    this.setState({ colors: [ ...this.state.colors, newColor ] })
+    this.setState({
+      colors: [ ...this.state.colors, newColor ],
+      currentColor: {
+        ...this.state.currentColor,
+        name: ''
+      }
+    })
   }
 
   render() {
-    console.log(this.state.currentColor);
     return (
       <div className='NewPaletteForm'>
         <NavBar/>
@@ -92,9 +110,11 @@ class NewPaletteForm extends Component {
             />
 
             <div className="NewPaletteForm__button--container">
-              <button className="NewPaletteForm__button"
-                      onClick={ () => this.addColor(this.state.currentColor) }>Add Color
-              </button>
+              <input type="text" value={this.state.currentColor.name} onChange={this.handleColorNameChange}/>
+                <button className="NewPaletteForm__button"
+                        onClick={ () => this.addColor(this.state.currentColor) }
+                >Add Color
+                </button>
               <button className="NewPaletteForm__button"
                       onClick={ this.randomizeColor }>Randomize Color
               </button>
@@ -109,7 +129,6 @@ class NewPaletteForm extends Component {
                 id={ color.hex }
                 background={ color.hex }
                 name={ color.name }
-                displayShadesButton={ true }
               />;
             }) }
           </div>
