@@ -4,7 +4,6 @@ import Slider, { createSliderWithTooltip } from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import DropDown from "./DropDown";
 import BackButton from "./BackButton";
-import NewPaletteForm from "./NewPaletteForm";
 
 const SliderWithTooltip = createSliderWithTooltip(Slider);
 
@@ -25,14 +24,14 @@ class NavBar extends Component {
             </Link>
           </div>
           { this.props.displayNewPaletteButton &&
-            <Link className='PaletteList__link--new-palette' to='/palette/new'>
-              <button>
-                Create New Palette
-              </button>
-            </Link>
+          <Link className='PaletteList__link--new-palette' to='/palette/new'>
+            <div>
+              Create New Palette
+            </div>
+          </Link>
 
           }
-Pa
+
           { this.props.displayBackButton &&
           <BackButton routeProps={ this.props.routeProps }/>
           }

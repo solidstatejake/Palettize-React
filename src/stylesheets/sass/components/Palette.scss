@@ -1,18 +1,17 @@
 .Palette {
   display:            grid;
-  grid-template-rows: 13rem auto;
 
   &__header {
     color:         white;
     font-size:     1.6rem;
-    margin-bottom: 1rem;
+    margin:        2rem;
     text-align:    center;
   }
 
   &__colors {
-    align-content:         center;
+    //align-items:         center;
     display:               grid;
-    grid-template-columns: 20rem 20rem 20rem 20rem 20rem;
+    grid-template-columns: auto auto auto auto auto;
     justify-content:       center;
   }
 

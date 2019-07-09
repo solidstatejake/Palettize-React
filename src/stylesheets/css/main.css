@@ -14,17 +14,15 @@ body {
   box-sizing: border-box; }
 
 .Palette {
-  display: grid;
-  grid-template-rows: 13rem auto; }
+  display: grid; }
   .Palette__header {
     color: white;
     font-size: 1.6rem;
-    margin-bottom: 1rem;
+    margin: 2rem;
     text-align: center; }
   .Palette__colors {
-    align-content: center;
     display: grid;
-    grid-template-columns: 20rem 20rem 20rem 20rem 20rem;
+    grid-template-columns: auto auto auto auto auto;
     justify-content: center; }
 
 .NavBar {
@@ -162,9 +160,28 @@ body {
   align-items: center;
   display: grid;
   grid-gap: 2rem;
-  grid-template-columns: 30rem 30rem 30rem;
+  grid-template-columns: auto auto auto;
   justify-content: center;
   padding: 5rem 0; }
+  @media screen and (max-width: 940px) {
+    .PaletteList__container {
+      grid-template-columns: auto auto; } }
+  @media screen and (max-width: 620px) {
+    .PaletteList__container {
+      grid-template-columns: auto; } }
+
+.PaletteList__link--new-palette {
+  background-color: #555;
+  box-shadow: none !important;
+  border-radius: 4px;
+  color: white !important;
+  cursor: pointer;
+  font-size: 1.5rem;
+  height: 4rem;
+  width: 20rem;
+  line-height: 4rem;
+  text-align: center;
+  margin-right: 3rem; }
 
 .PaletteList :link,
 .PaletteList :visited {
