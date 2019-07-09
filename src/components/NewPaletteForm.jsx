@@ -11,29 +11,19 @@ class NewPaletteForm extends Component {
     super(props);
     this.state = {
       displayDrawerContents: false,
-      currentColor: {
-        hex: '#333333',
-        rgb: {
-          r: 3,
-          g: 3,
-          b: 3,
-
-        },
-        rgba: {
-          r: 3,
-          g: 3,
-          b: 3,
-          a: 1
-        },
-        name: ""
-      },
+      currentColor: this.randomizeColor(true),
       colors: []
     };
 
     this.toggleDrawer = this.toggleDrawer.bind(this);
+    this.clearPalette = this.clearPalette.bind(this);
     this.handleColorPickerChange = this.handleColorPickerChange.bind(this);
     this.handleColorNameChange = this.handleColorNameChange.bind(this);
     this.randomizeColor = this.randomizeColor.bind(this);
+  }
+
+  clearPalette() {
+    this.setState({colors: []}, () => console.log('force update'));
   }
 
   handleColorPickerChange(color) {
@@ -66,30 +56,47 @@ class NewPaletteForm extends Component {
     this.setState({ displayDrawerContents: !this.state.displayDrawerContents })
   }
 
-  randomizeColor() {
+  randomizeColor(calledInConstructor) {
     const randomColorHEX = chroma.random();
     const randomColorRGBA = randomColorHEX.rgba();
+    const currentColor = {
+      hex: randomColorHEX.hex(),
+      rgb: {
+        r: randomColorRGBA[ 0 ],
+        g: randomColorRGBA[ 1 ],
+        b: randomColorRGBA[ 2 ]
+      },
+      rgba: {
+        r: randomColorRGBA[ 0 ],
+        g: randomColorRGBA[ 1 ],
+        b: randomColorRGBA[ 2 ],
+        a: randomColorRGBA[ 3 ]
+      },
+      name: calledInConstructor ? '' : this.state.currentColor.name
+    };
 
-    this.setState({
-      currentColor: {
-        hex: randomColorHEX.hex(),
-        rgba: {
-          r: randomColorRGBA[ 0 ],
-          g: randomColorRGBA[ 1 ],
-          b: randomColorRGBA[ 2 ],
-          a: randomColorRGBA[ 3 ]
-        }
-      }
-    })
+    if(calledInConstructor) {
+     return currentColor;
+    } else {
+      this.setState({ currentColor })
+    }
   }
 
   addColor(newColor) {
+    const {colors: currentColors} = this.state;
+
+    // Validate color name length
     if(this.state.currentColor.name.length < 3 ) {
       return alert('Color must have a name of at least three characters.');
     }
 
+    // Validate color name uniquity
+    for(let color of currentColors) {
+      if(color.name === newColor.name) return alert('Color name must be unique.');
+    }
+
     this.setState({
-      colors: [ ...this.state.colors, newColor ],
+      colors: [ ...currentColors, newColor ],
       currentColor: {
         ...this.state.currentColor,
         name: ''
@@ -107,6 +114,12 @@ class NewPaletteForm extends Component {
             toggleDrawer={ this.toggleDrawer }
             displayDrawerContents={ this.state.displayDrawerContents }
           >
+            <button
+              className="NewPaletteForm__button--delete-palette"
+              onClick={this.clearPalette}
+            >
+              Clear Palette
+            </button>
 
             <ChromePicker
               color={ this.state.currentColor.hex }
