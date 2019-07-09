@@ -217,7 +217,7 @@ body {
   width: 20rem; }
 
 .Drawer {
-  background-color: #984242;
+  background-color: #FFFFFF;
   display: flex;
   flex-direction: column;
   height: 60rem;
@@ -239,10 +239,28 @@ body {
   height: 100vh; }
   .NewPaletteForm__button {
     border: none;
+    border-bottom: 1px solid black;
     height: 3rem;
     width: 49.9%; }
     .NewPaletteForm__button:not(:last-child) {
       border-right: 1px solid black; }
+  .NewPaletteForm__input--text {
+    border: none;
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+    font-size: 1.6rem;
+    height: 4rem;
+    margin-top: 2rem;
+    outline: none;
+    text-align: center;
+    width: 100%; }
+    .NewPaletteForm__input--text:invalid {
+      outline: none;
+      border: none;
+      box-shadow: none;
+      border-bottom: 1px solid black;
+      margin-bottom: 0;
+      border-top: 1px solid black; }
   .NewPaletteForm__color-picker {
     margin-top: 5rem; }
   .NewPaletteForm__body--container {

@@ -84,6 +84,10 @@ class NewPaletteForm extends Component {
   }
 
   addColor(newColor) {
+    if(this.state.currentColor.name.length < 3 ) {
+      return alert('Color must have a name of at least three characters.');
+    }
+
     this.setState({
       colors: [ ...this.state.colors, newColor ],
       currentColor: {
@@ -110,7 +114,7 @@ class NewPaletteForm extends Component {
             />
 
             <div className="NewPaletteForm__button--container">
-              <input type="text" value={this.state.currentColor.name} onChange={this.handleColorNameChange}/>
+              <input className='NewPaletteForm__input--text' type="text" placeholder='Color Name' value={this.state.currentColor.name} onChange={this.handleColorNameChange}/>
                 <button className="NewPaletteForm__button"
                         onClick={ () => this.addColor(this.state.currentColor) }
                 >Add Color
@@ -125,8 +129,8 @@ class NewPaletteForm extends Component {
           <div className="NewPaletteForm__colors">
             { this.state.colors.map((color) => {
               return <UserColorBox
-                key={ color.hex }
-                id={ color.hex }
+                key={ color.name }
+                id={ color.name }
                 background={ color.hex }
                 name={ color.name }
               />;
