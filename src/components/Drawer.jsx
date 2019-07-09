@@ -1,17 +1,32 @@
 import React, { Component } from 'react';
 
 class Drawer extends Component {
- render() {
-  return (
-   <div className='Drawer'>
-     <header className='Drawer__header'>
-       <span className="Drawer__header--text">Palette Designer</span>
-     </header>
+  constructor(props) {
+      super(props);
 
-     {this.props.children}
-   </div>
-  );
- }
+      this.handleToggleDrawer = this.handleToggleDrawer.bind(this);
+  }
+  handleToggleDrawer() {
+    this.props.toggleDrawer();
+  }
+  render() {
+    const {displayDrawerContents} = this.props;
+    return (
+      <div
+        className={`Drawer ${!displayDrawerContents && 'Drawer__OPEN'}`}
+      >
+        <header className='Drawer__header' onClick={this.handleToggleDrawer}>
+          <span className="Drawer__header--text">Palette Designer</span>
+        </header>
+
+        {displayDrawerContents &&
+        <div className="Drawer__contents--container">
+          { this.props.children }
+        </div>
+        }
+      </div>
+    );
+  }
 }
 
 export default Drawer;

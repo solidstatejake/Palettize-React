@@ -39,7 +39,8 @@ class ColorBox extends Component {
           <button className="ColorBox__button--copy">Copy</button>
 
           <span className='ColorBox__content--color-name'
-                style={ name.length > 18 ? { fontSize: '.8rem' } : {} }>
+                style={ name.length > 18 ? { fontSize: '.8rem' } : {} }
+          >
             { name }
             </span>
 

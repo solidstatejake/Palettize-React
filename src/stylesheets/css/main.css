@@ -218,19 +218,42 @@ body {
 
 .Drawer {
   background-color: #984242;
-  width: 25rem;
-  height: 60rem; }
+  display: flex;
+  flex-direction: column;
+  height: 60rem;
+  width: 25rem; }
   .Drawer__header {
     background-color: #888;
     height: 6rem;
     text-align: center;
     line-height: 6rem;
-    font-size: 1.6rem; }
+    font-size: 1.6rem;
+    width: 100%; }
+  .Drawer__contents--container {
+    margin-top: 8rem; }
+
+.Drawer__OPEN {
+  height: auto; }
 
 .NewPaletteForm {
   height: 100vh; }
+  .NewPaletteForm__button {
+    border: none;
+    height: 3rem;
+    width: 49.9%; }
+    .NewPaletteForm__button:not(:last-child) {
+      border-right: 1px solid black; }
   .NewPaletteForm__color-picker {
     margin-top: 5rem; }
+  .NewPaletteForm__body--container {
+    display: flex;
+    justify-content: flex-start; }
+  .NewPaletteForm__colors {
+    align-content: start;
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    justify-content: start;
+    width: 100%; }
 
 .chrome-picker {
   font-family: inherit !important;
