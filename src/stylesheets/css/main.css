@@ -215,3 +215,23 @@ body {
   font-size: 1.5rem;
   height: 4rem;
   width: 20rem; }
+
+.Drawer {
+  background-color: #984242;
+  width: 25rem;
+  height: 60rem; }
+  .Drawer__header {
+    background-color: #888;
+    height: 6rem;
+    text-align: center;
+    line-height: 6rem;
+    font-size: 1.6rem; }
+
+.NewPaletteForm {
+  height: 100vh; }
+  .NewPaletteForm__color-picker {
+    margin-top: 5rem; }
+
+.chrome-picker {
+  font-family: inherit !important;
+  width: 25rem !important; }

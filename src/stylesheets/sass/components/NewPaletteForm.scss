@@ -1,0 +1,12 @@
+.NewPaletteForm {
+  height: 100vh;
+
+  &__color-picker {
+    margin-top: 5rem;
+  }
+}
+
+.chrome-picker {
+  font-family: inherit !important;
+  width:       25rem !important;
+}
