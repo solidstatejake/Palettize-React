@@ -229,8 +229,6 @@ body {
     line-height: 6rem;
     font-size: 1.6rem;
     width: 100%; }
-  .Drawer__contents--container {
-    margin-top: 8rem; }
 
 .Drawer__OPEN {
   height: auto; }
@@ -244,6 +242,15 @@ body {
     width: 49.9%; }
     .NewPaletteForm__button:not(:last-child) {
       border-right: 1px solid black; }
+    .NewPaletteForm__button--delete-palette {
+      width: 100%;
+      height: 10rem;
+      background-color: #e72d2d;
+      border: none;
+      border-top: 1px solid black;
+      border-bottom: 1px solid black;
+      margin: 2rem 0;
+      font-size: 1.6rem; }
   .NewPaletteForm__input--text {
     border: none;
     border-bottom: 1px solid black;

@@ -2,13 +2,23 @@
   height: 100vh;
 
   &__button {
-    border: none;
+    border:        none;
     border-bottom: 1px solid black;
-    height: 3rem;
-    width:  49.9%;
+    height:        3rem;
+    width:         49.9%;
 
     &:not(:last-child) {
       border-right: 1px solid black;
+    }
+    &--delete-palette {
+      width:            100%;
+      height:           10rem;
+      background-color: rgb(231, 45, 45);
+      border:           none;
+      border-top:       1px solid black;
+      border-bottom:    1px solid black;
+      margin:           2rem 0;
+      font-size:        1.6rem;
     }
     &--container {
     }
@@ -16,15 +26,15 @@
 
   &__input {
     &--text {
-      border:     none;
+      border:        none;
       border-bottom: 1px solid black;
       border-top:    1px solid black;
       font-size:     1.6rem;
-      height:     4rem;
+      height:        4rem;
       margin-top:    2rem;
-      outline:    none;
-      text-align: center;
-      width:      100%;
+      outline:       none;
+      text-align:    center;
+      width:         100%;
 
       &:invalid {
         outline:       none;
