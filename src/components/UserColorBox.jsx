@@ -3,7 +3,6 @@ import { withStyles } from '@material-ui/styles';
 
 const styles = {
   root: {
-    cursor: 'pointer',
     display: 'grid',
     fontSize: '1rem',
     gridTemplateRows: '17rem 3rem',

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import ColorBox from "./ColorBox";
 import NavBar from "./NavBar";
+import BackButton from "./BackButton";
+import DropDown from "./DropDown";
 
 class SingleColorPalette extends Component {
   constructor(props) {
@@ -54,18 +56,19 @@ class SingleColorPalette extends Component {
 
     return (
       <div className='SingleColorPalette'>
-        <NavBar
-          routeProps={ this.props.routeProps }
-          displayBackButton={ true }
-          displayDropdown={ true }
-          handleFormatChange={ this.handleFormatChange }
-          displayedFormat={ this.state.displayedFormat }
-        />
+        <NavBar>
+          <BackButton routeProps={ this.props.routeProps }/>
+
+          <DropDown handleFormatChange={ this.handleFormatChange }
+                    displayedFormat={ this.state.displayedFormat }/>
+        </NavBar>
+
         <header className='SingleColorPalette__header'>
           { paletteName } { emoji }
           <br/>
           { colorName }
         </header>
+
         <div className="SingleColorPalette__body">
 
           <div className='SingleColorPalette__colors'>

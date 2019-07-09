@@ -1,9 +1,16 @@
 import React, { Component } from 'react';
 import ColorBox from "./ColorBox";
 import NavBar from "./NavBar";
+import BackButton from "./BackButton";
+import DropDown from "./DropDown";
+import Slider, { createSliderWithTooltip } from 'rc-slider';
+import 'rc-slider/assets/index.css';
+
+const SliderWithTooltip = createSliderWithTooltip(Slider);
 
 class Palette extends Component {
   constructor(props) {
+
     super(props);
     this.state = { level: 400, displayedFormat: 'HEX' };
 
@@ -51,15 +58,20 @@ class Palette extends Component {
     return (
       <div className="Palette">
         <NavBar
-          level={ level }
-          routeProps={ this.props.routeProps }
-          displayBackButton={ true }
-          displaySlider={ true }
-          displayDropdown={ true }
-          displayedFormat={ this.state.displayedFormat }
-          handleSliderChange={ this.handleSliderChange }
-          handleFormatChange={ this.handleFormatChange }
-        />
+        >
+          <BackButton routeProps={ this.props.routeProps }/>
+          <div className="NavBar__slider">
+            <SliderWithTooltip
+              min={ 100 }
+              max={ 900 }
+              step={ 100 }
+              defaultValue={ level }
+              onChange={ (value) => this.handleSliderChange(value) }
+            />
+          </div>
+          <DropDown handleFormatChange={ this.handleFormatChange }
+                    displayedFormat={ this.state.displayedFormat }/>
+        </NavBar>
         <header
           className='Palette__header'>{ this.props.palette.paletteName } { this.props.palette.emoji }</header>
         <div className="Palette__colors">
