@@ -1,12 +1,12 @@
 .Drawer {
-  background-color: #FFFFFF;
+  background-color: #555;
+  bottom:           -55rem;
   display:          flex;
   flex-direction:   column;
   height:           auto;
-  left:             -38rem;
-  position:         relative;
-  transition:       left .3s;
-  width:            38rem;
+  position:         fixed;
+  transition:       bottom .3s;
+  width:            100%;
 
   &__header {
     background-color: #888;
@@ -18,13 +18,83 @@
   }
 
   &__contents--container {
-    text-align: center;
+    display:               grid;
+    grid-template-columns: auto auto auto;
+    justify-content:       space-between;
+  }
+
+  &__container--form {
+    align-items:     center;
+    display:         flex;
+    flex-direction:  column;
+    justify-content: center;
+  }
+
+  &__input {
+    border:           none;
+    border-bottom:    1px solid white;
+    background-color: #555;
+    color:            white;
+    grid-area:        colorName / span 2;
+    font-size:        1.6rem;
+    height:           4rem;
+    margin-bottom:    5rem;
+    outline:          none;
+    text-align:       center;
+    width:            31rem;
+
+    &:invalid {
+      border:        none;
+      border-bottom: 1px solid black;
+      box-shadow:    none;
+      margin-bottom: 0;
+      outline:       none;
+    }
+  }
+
+  &__button {
+    border:        none;
+    border-bottom: 1px solid black;
+    height:        3rem;
+    width:         49.9%;
+
+    &--container {
+      display:               grid;
+      grid-template-columns: auto auto;
+      grid-template-rows:    auto auto;
+      grid-template-areas:   "colorName ." "addColor randomizeColor";
+    }
+
+    &--delete-palette {
+      align-self:       center;
+      background-color: #E72D2D;
+      border:           none;
+      border-radius:    4px;
+      font-size:        1.6rem;
+      height:           100%;
+      width:            23rem;
+    }
+
+    &--add-color {
+      border:        none;
+      border-radius: 2px;
+      font-size:     1.3rem;
+      grid-area:     addColor;
+      width:         13rem;
+    }
+
+    &--randomize-color {
+      grid-area:        randomizeColor;
+      border:           none;
+      background-color: burlywood;
+      border-radius:    2px;
+      height:           5rem;
+      font-size:        1.3rem;
+    }
   }
 
 }
 
 .Drawer__OPEN {
-  left: 0;
+  bottom: 0;
 }
-
-

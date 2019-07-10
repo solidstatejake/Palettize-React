@@ -43,8 +43,7 @@ body {
     justify-content: space-between; }
   .NavBar__logo--container {
     font-size: 3.5rem;
-    text-align: center;
-    width: 20rem; }
+    width: 10rem; }
     .NavBar__logo--container a {
       text-decoration: none; }
   .NavBar__logo--text {
@@ -220,14 +219,14 @@ body {
   width: 20rem; }
 
 .Drawer {
-  background-color: #FFFFFF;
+  background-color: #555;
+  bottom: -55rem;
   display: flex;
   flex-direction: column;
   height: auto;
-  left: -38rem;
-  position: relative;
-  transition: left .3s;
-  width: 38rem; }
+  position: fixed;
+  transition: bottom .3s;
+  width: 100%; }
   .Drawer__header {
     background-color: #888;
     height: 6rem;
@@ -236,78 +235,114 @@ body {
     font-size: 1.6rem;
     width: 100%; }
   .Drawer__contents--container {
-    text-align: center; }
-
-.Drawer__OPEN {
-  left: 0; }
-
-.NewPaletteForm {
-  height: 100vh; }
-  .NewPaletteForm__button {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    justify-content: space-between; }
+  .Drawer__container--form {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; }
+  .Drawer__input {
+    border: none;
+    border-bottom: 1px solid white;
+    background-color: #555;
+    color: white;
+    grid-area: colorName / span 2;
+    font-size: 1.6rem;
+    height: 4rem;
+    margin-bottom: 5rem;
+    outline: none;
+    text-align: center;
+    width: 31rem; }
+    .Drawer__input:invalid {
+      border: none;
+      border-bottom: 1px solid black;
+      box-shadow: none;
+      margin-bottom: 0;
+      outline: none; }
+  .Drawer__button {
     border: none;
     border-bottom: 1px solid black;
     height: 3rem;
     width: 49.9%; }
-    .NewPaletteForm__button:not(:last-child) {
-      border-right: 1px solid black; }
-    .NewPaletteForm__button--open-palette-designer, .NewPaletteForm__button--create-palette {
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 1.6rem;
-      height: 4rem;
-      line-height: 4rem;
-      text-align: center;
-      width: 20rem; }
-    .NewPaletteForm__button--create-palette {
-      background-color: #27D032; }
-    .NewPaletteForm__button--open-palette-designer {
-      background-color: #777777; }
-    .NewPaletteForm__button--delete-palette {
+    .Drawer__button--container {
+      display: grid;
+      grid-template-columns: auto auto;
+      grid-template-rows: auto auto;
+      grid-template-areas: "colorName ." "addColor randomizeColor"; }
+    .Drawer__button--delete-palette {
+      align-self: center;
       background-color: #E72D2D;
       border: none;
       border-radius: 4px;
       font-size: 1.6rem;
-      height: 10rem;
-      margin: 2rem;
-      width: 80%; }
-  .NewPaletteForm__input--palette-name {
-    background: #444444;
-    border: none;
-    border-bottom: 1px solid white;
-    color: white;
-    font-size: 1.6rem;
-    height: 4rem;
-    outline: none;
-    text-align: center; }
-  .NewPaletteForm__input--text {
-    border: none;
-    border-bottom: 1px solid black;
-    border-top: 1px solid black;
-    font-size: 1.6rem;
-    height: 4rem;
-    margin-top: 2rem;
-    outline: none;
-    text-align: center;
-    width: 100%; }
-    .NewPaletteForm__input--text:invalid {
-      outline: none;
+      height: 100%;
+      width: 23rem; }
+    .Drawer__button--add-color {
       border: none;
-      box-shadow: none;
-      border-bottom: 1px solid black;
-      margin-bottom: 0;
-      border-top: 1px solid black; }
-  .NewPaletteForm__color-picker {
-    margin-top: 5rem; }
-  .NewPaletteForm__body--container {
-    display: flex;
-    justify-content: flex-start; }
-  .NewPaletteForm__colors {
-    align-content: start;
-    display: grid;
-    grid-template-columns: auto auto auto auto auto;
-    justify-content: start;
-    width: 100%; }
+      border-radius: 2px;
+      font-size: 1.3rem;
+      grid-area: addColor;
+      width: 13rem; }
+    .Drawer__button--randomize-color {
+      grid-area: randomizeColor;
+      border: none;
+      background-color: burlywood;
+      border-radius: 2px;
+      height: 5rem;
+      font-size: 1.3rem; }
+
+.Drawer__OPEN {
+  bottom: 0; }
+
+.NewPaletteForm__button--open-palette-designer, .NewPaletteForm__button--create-palette {
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1.6rem;
+  height: 4rem;
+  line-height: 4rem;
+  text-align: center;
+  width: 20rem; }
+
+.NewPaletteForm__button--create-palette {
+  background-color: #1b8f17;
+  box-shadow: 0px 0px 5px #2beb25;
+  color: white;
+  text-shadow: 1px 1px 7px #2beb25; }
+
+.NewPaletteForm__button--open-palette-designer {
+  background-color: #777777;
+  color: #d5d5d5;
+  text-shadow: 1px 1px 6px #bbb;
+  box-shadow: 0 0 5px #bbb; }
+
+.NewPaletteForm__input--palette-name {
+  background: #444444;
+  border: none;
+  border-bottom: 1px solid white;
+  color: white;
+  font-size: 1.6rem;
+  height: 4rem;
+  outline: none;
+  text-align: center; }
+
+.NewPaletteForm__color-picker {
+  margin-top: 5rem; }
+
+.NewPaletteForm__body--container {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+  justify-content: center;
+  margin-top: 4rem; }
+
+.NewPaletteForm__colors {
+  align-content: start;
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+  justify-content: start;
+  width: 100%; }
 
 .chrome-picker {
   font-family: inherit !important;

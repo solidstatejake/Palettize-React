@@ -97,7 +97,7 @@ class NewPalettePage extends Component {
 
     const { currentPaletteName, colorsInUserPalette } = this.state;
 
-    if(currentPaletteName.length < 3) {
+    if (currentPaletteName.length < 3) {
       return alert('Palette name must be longer than three characters.');
     }
 
@@ -138,53 +138,50 @@ class NewPalettePage extends Component {
       <div className='NewPaletteForm'>
         <NavBar>
           <button className="NewPaletteForm__button--open-palette-designer"
-                  onClick={ this.toggleDrawer }
-          >Palette Designer
+                  onClick={ this.toggleDrawer }>
+            Palette Designer
           </button>
 
           <input className='NewPaletteForm__input--palette-name' type="text"
                  placeholder='Palette Name' value={ currentPaletteName }
-                 onChange={ this.handlePaletteNameChange }
-          />
+                 onChange={ this.handlePaletteNameChange }/>
+
           <button className="NewPaletteForm__button--create-palette"
-                  onClick={ this.handleCreateNewPalette }
-          >Create Palette
+                  onClick={ this.handleCreateNewPalette }>
+            Create Palette
           </button>
+
         </NavBar>
+
         <div className="NewPaletteForm__body--container">
 
-          <Drawer
-            displayDrawerContents={ displayDrawerContents }
-          >
-            <button
-              className="NewPaletteForm__button--delete-palette"
-              onClick={ this.clearPalette }
-            >
+          <Drawer displayDrawerContents={ displayDrawerContents }>
+            <ChromePicker color={ currentColor.color }
+                          onChangeComplete={ this.handleColorPickerChange }/>
+
+            <div className='Drawer__container--form'>
+
+              <div className="Drawer__button--container">
+                <input className='Drawer__input' type="text"
+                       placeholder='Color Name' value={ currentColor.name }
+                       onChange={ this.handleColorNameChange }/>
+
+                <button className="Drawer__button--add-color"
+                        onClick={ () => this.addColor(currentColor) }>
+                  Add Color
+                </button>
+
+                <button className="Drawer__button--randomize-color"
+                        onClick={ () => this.randomizeColor(false) }>
+                  Randomize Color
+                </button>
+
+              </div>
+            </div>
+            <button className="Drawer__button--delete-palette"
+                    onClick={ this.clearPalette }>
               Clear Palette
             </button>
-
-            <ChromePicker
-              color={ currentColor.color }
-              onChangeComplete={ this.handleColorPickerChange }
-            />
-
-            <div className="NewPaletteForm__button--container">
-              <input className='NewPaletteForm__input--text' type="text"
-                     placeholder='Color Name' value={ currentColor.name }
-                     onChange={ this.handleColorNameChange }
-              />
-
-              <button className="NewPaletteForm__button"
-                      onClick={ () => this.addColor(currentColor) }
-              >Add Color
-              </button>
-
-              <button className="NewPaletteForm__button"
-                      onClick={ () => this.randomizeColor(false) }
-              >Randomize Color
-              </button>
-
-            </div>
 
           </Drawer>
 
