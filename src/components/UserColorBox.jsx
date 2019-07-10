@@ -6,8 +6,8 @@ const styles = {
     display: 'grid',
     fontSize: '1rem',
     gridTemplateRows: '17rem 3rem',
-    gridTemplateColumns: '9rem 11rem',
-    gridTemplateAreas: '"copy ." "title more"',
+    gridTemplateColumns: '17rem 3rem',
+    gridTemplateAreas: '". ." "title trash"',
     height: '20rem',
     letterSpacing: '.2rem',
     textTransform: 'uppercase',
@@ -16,10 +16,24 @@ const styles = {
     '& span': {
       gridArea: 'title',
       marginLeft: '1rem'
+    },
+
+    '& div': {
+      gridArea: 'trash',
+      textAlign: 'center',
+      lineHeight: '3rem',
+
+      '& i': {
+        fontSize: '1.3rem',
+        transition: '.3s',
+
+        '&:hover': {
+          color: 'white'
+        }
+      }
     }
   }
 };
-
 
 function UserColorBox(props) {
 
@@ -28,6 +42,11 @@ function UserColorBox(props) {
     <div className={ classes.root } style={ { background } }>
 
       <span>{ name }</span>
+
+      <div onClick={props.deleteUserColorBox}>
+        <i className='icon-trash'></i>
+      </div>
+
     </div>
   )
 }

@@ -18,7 +18,8 @@ class DropDownItem extends Component {
         onClick={ () => {
           this.props.changeFormat(formatType);
           this.props.displayMenu()
-        } }>
+        } }
+      >
 
         { formatType }
 

@@ -8,7 +8,6 @@ import PaletteList from "./PaletteList";
 import SingleColorPalette from "./SingleColorPalette";
 import NewPalettePage from "./NewPalettePage";
 
-
 class App extends Component {
   constructor(props) {
     super(props);

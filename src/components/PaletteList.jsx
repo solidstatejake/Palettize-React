@@ -16,6 +16,7 @@ class PaletteList extends Component {
 
     return (
       <div className='PaletteList'>
+
         <NavBar >
           <Link className='PaletteList__link--new-palette' to='/palette/new'>
             <div>
@@ -23,6 +24,7 @@ class PaletteList extends Component {
             </div>
           </Link>
         </NavBar>
+
         <div className='PaletteList__container'>
           { miniPalettes }
         </div>

@@ -107,6 +107,12 @@ class NewPalettePage extends Component {
     this.props.routeProps.history.push('/');
   }
 
+  deleteUserColorBox(name) {
+    this.setState( {
+      colorsInUserPalette: this.state.colorsInUserPalette.filter((color) => color.name !== name)
+    })
+  }
+
   render() {
 
     const {
@@ -170,6 +176,7 @@ class NewPalettePage extends Component {
                 id={ color.name }
                 background={ color.color }
                 name={ color.name }
+                deleteUserColorBox={() => this.deleteUserColorBox(color.name)}
               />
             }) }
           </div>
