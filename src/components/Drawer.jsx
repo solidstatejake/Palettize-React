@@ -13,17 +13,17 @@ class Drawer extends Component {
     const {displayDrawerContents} = this.props;
     return (
       <div
-        className={`Drawer ${!displayDrawerContents && 'Drawer__OPEN'}`}
+        className={`Drawer ${displayDrawerContents && 'Drawer__OPEN'}`}
       >
         <header className='Drawer__header' onClick={this.handleToggleDrawer}>
           <span className="Drawer__header--text">Palette Designer</span>
         </header>
 
-        {displayDrawerContents &&
+
         <div className="Drawer__contents--container">
           { this.props.children }
         </div>
-        }
+
       </div>
     );
   }

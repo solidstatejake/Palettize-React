@@ -3,7 +3,8 @@ import { ChromePicker } from 'react-color';
 import chroma from 'chroma-js';
 import NavBar from "./NavBar";
 import Drawer from "./Drawer";
-import UserColorBox from "./UserColorBox";
+import DraggableGrid from "./DraggableGrid";
+import { arrayMove } from 'react-sortable-hoc'
 
 class NewPalettePage extends Component {
 
@@ -24,6 +25,7 @@ class NewPalettePage extends Component {
     this.handlePaletteNameChange = this.handlePaletteNameChange.bind(this);
     this.randomizeColor = this.randomizeColor.bind(this);
     this.handleCreateNewPalette = this.handleCreateNewPalette.bind(this);
+    this.deleteUserColorBox = this.deleteUserColorBox.bind(this);
   }
 
   toggleDrawer() {
@@ -94,6 +96,11 @@ class NewPalettePage extends Component {
   handleCreateNewPalette() {
 
     const { currentPaletteName, colorsInUserPalette } = this.state;
+
+    if(currentPaletteName.length < 3) {
+      return alert('Palette name must be longer than three characters.');
+    }
+
     const currentPaletteIdName = currentPaletteName.toLowerCase().replace(new RegExp(' ', 'g'), '-');
 
     const newPalette = {
@@ -108,10 +115,17 @@ class NewPalettePage extends Component {
   }
 
   deleteUserColorBox(name) {
-    this.setState( {
+    this.setState({
       colorsInUserPalette: this.state.colorsInUserPalette.filter((color) => color.name !== name)
     })
   }
+
+  // This function is needed by the drag n drop library to reorder boxes.
+  onSortEnd = ({ oldIndex, newIndex }) => {
+    this.setState(({ colorsInUserPalette }) => ({
+      colorsInUserPalette: arrayMove(colorsInUserPalette, oldIndex, newIndex)
+    }))
+  };
 
   render() {
 
@@ -123,6 +137,15 @@ class NewPalettePage extends Component {
     return (
       <div className='NewPaletteForm'>
         <NavBar>
+          <button className="NewPaletteForm__button--open-palette-designer"
+                  onClick={ this.toggleDrawer }
+          >Palette Designer
+          </button>
+
+          <input className='NewPaletteForm__input--palette-name' type="text"
+                 placeholder='Palette Name' value={ currentPaletteName }
+                 onChange={ this.handlePaletteNameChange }
+          />
           <button className="NewPaletteForm__button--create-palette"
                   onClick={ this.handleCreateNewPalette }
           >Create Palette
@@ -131,7 +154,6 @@ class NewPalettePage extends Component {
         <div className="NewPaletteForm__body--container">
 
           <Drawer
-            toggleDrawer={ this.toggleDrawer }
             displayDrawerContents={ displayDrawerContents }
           >
             <button
@@ -151,10 +173,7 @@ class NewPalettePage extends Component {
                      placeholder='Color Name' value={ currentColor.name }
                      onChange={ this.handleColorNameChange }
               />
-              <input className='NewPaletteForm__input--text' type="text"
-                     placeholder='Palette Name' value={ currentPaletteName }
-                     onChange={ this.handlePaletteNameChange }
-              />
+
               <button className="NewPaletteForm__button"
                       onClick={ () => this.addColor(currentColor) }
               >Add Color
@@ -169,17 +188,15 @@ class NewPalettePage extends Component {
 
           </Drawer>
 
-          <div className="NewPaletteForm__colors">
-            { colorsInUserPalette.map((color) => {
-              return <UserColorBox
-                key={ color.name }
-                id={ color.name }
-                background={ color.color }
-                name={ color.name }
-                deleteUserColorBox={() => this.deleteUserColorBox(color.name)}
-              />
-            }) }
-          </div>
+
+          <DraggableGrid
+            colorsInUserPalette={ colorsInUserPalette }
+            deleteUserColorBox={ this.deleteUserColorBox }
+            axis='xy'
+            onSortEnd={ this.onSortEnd }
+          />
+
+
         </div>
 
       </div>

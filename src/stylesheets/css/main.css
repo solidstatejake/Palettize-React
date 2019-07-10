@@ -1,8 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Pacifico&display=swap");
-@import '../Icons/css/fontello.css';
-@import '../Icons/css/fontello-codes.css';
-@import '../Icons/css/fontello-embedded.css';
-
+@import url(../Icons/css/fontello.css);
+@import url(../Icons/css/fontello-codes.css);
+@import url(../Icons/css/fontello-embedded.css);
 *,
 *::after,
 *::before {
@@ -224,7 +223,10 @@ body {
   background-color: #FFFFFF;
   display: flex;
   flex-direction: column;
-  height: 70rem;
+  height: auto;
+  left: -38rem;
+  position: relative;
+  transition: left .3s;
   width: 38rem; }
   .Drawer__header {
     background-color: #888;
@@ -233,9 +235,11 @@ body {
     line-height: 6rem;
     font-size: 1.6rem;
     width: 100%; }
+  .Drawer__contents--container {
+    text-align: center; }
 
 .Drawer__OPEN {
-  height: auto; }
+  left: 0; }
 
 .NewPaletteForm {
   height: 100vh; }
@@ -246,21 +250,36 @@ body {
     width: 49.9%; }
     .NewPaletteForm__button:not(:last-child) {
       border-right: 1px solid black; }
-    .NewPaletteForm__button--delete-palette {
-      width: 100%;
-      height: 10rem;
-      background-color: #e72d2d;
+    .NewPaletteForm__button--open-palette-designer, .NewPaletteForm__button--create-palette {
       border: none;
-      border-top: 1px solid black;
-      border-bottom: 1px solid black;
-      margin: 2rem 0;
-      font-size: 1.6rem; }
-    .NewPaletteForm__button--create-palette {
-      border: 1px solid black;
+      border-radius: 4px;
+      cursor: pointer;
       font-size: 1.6rem;
-      height: 8rem;
-      margin-top: 1rem;
-      width: 100%; }
+      height: 4rem;
+      line-height: 4rem;
+      text-align: center;
+      width: 20rem; }
+    .NewPaletteForm__button--create-palette {
+      background-color: #27D032; }
+    .NewPaletteForm__button--open-palette-designer {
+      background-color: #777777; }
+    .NewPaletteForm__button--delete-palette {
+      background-color: #E72D2D;
+      border: none;
+      border-radius: 4px;
+      font-size: 1.6rem;
+      height: 10rem;
+      margin: 2rem;
+      width: 80%; }
+  .NewPaletteForm__input--palette-name {
+    background: #444444;
+    border: none;
+    border-bottom: 1px solid white;
+    color: white;
+    font-size: 1.6rem;
+    height: 4rem;
+    outline: none;
+    text-align: center; }
   .NewPaletteForm__input--text {
     border: none;
     border-bottom: 1px solid black;
