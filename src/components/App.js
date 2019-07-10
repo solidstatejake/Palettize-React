@@ -22,7 +22,7 @@ class App extends Component {
   }
 
   findPalette(id) {
-    return seedColors.find((palette) => {
+    return this.state.palettes.find((palette) => {
       return palette.id === id;
     })
   }

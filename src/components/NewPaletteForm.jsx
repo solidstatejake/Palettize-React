@@ -4,7 +4,6 @@ import chroma from 'chroma-js';
 import NavBar from "./NavBar";
 import Drawer from "./Drawer";
 import UserColorBox from "./UserColorBox";
-import fs from 'fs';
 
 class NewPaletteForm extends Component {
 
@@ -13,7 +12,6 @@ class NewPaletteForm extends Component {
     this.state = {
       displayDrawerContents: false,
       currentPaletteName: '',
-      currentPaletteIdName: '',
       currentPaletteEmoji: '',
       currentColor: this.randomizeColor(true),
       colorsInUserPalette: []
@@ -40,7 +38,7 @@ class NewPaletteForm extends Component {
     const name = this.state.currentColor.name;
     this.setState({
       currentColor: {
-        hex: color.hex,
+        color: color.hex,
         name
       }
     });
@@ -82,10 +80,9 @@ class NewPaletteForm extends Component {
   }
 
   randomizeColor(calledInConstructor = false) {
-    const randomColorHEX = chroma.random();
-    const randomColorRGBA = randomColorHEX.rgba();
+    const randomColor = chroma.random();
     const currentColor = {
-      hex: randomColorHEX.hex(),
+      color: randomColor.hex(),
       name: calledInConstructor ? '' : this.state.currentColor.name
     };
 
@@ -99,7 +96,7 @@ class NewPaletteForm extends Component {
   handleCreateNewPalette() {
 
     const { currentPaletteName, colorsInUserPalette } = this.state;
-    const currentPaletteIdName = currentPaletteName.toLowerCase().replace(' ', '-');
+    const currentPaletteIdName = currentPaletteName.toLowerCase().replace(new RegExp(' ', 'g'), '-');
 
     const newPalette = {
       paletteName: currentPaletteName,
@@ -112,7 +109,12 @@ class NewPaletteForm extends Component {
   }
 
   render() {
+
     const { currentColor, colorsInUserPalette, currentPaletteName, displayDrawerContents } = this.state;
+    console.log('Palette Name', currentPaletteName);
+    console.log('Palette ID', currentPaletteName.toLowerCase().replace(new RegExp(' ', 'g'), '-'));
+    console.log('Palette colors', colorsInUserPalette);
+
     return (
       <div className='NewPaletteForm'>
         <NavBar/>
@@ -130,7 +132,7 @@ class NewPaletteForm extends Component {
             </button>
 
             <ChromePicker
-              color={ currentColor.hex }
+              color={ currentColor.color }
               onChangeComplete={ this.handleColorPickerChange }
             />
 
@@ -166,7 +168,7 @@ class NewPaletteForm extends Component {
               return <UserColorBox
                 key={ color.name }
                 id={ color.name }
-                background={ color.hex }
+                background={ color.color }
                 name={ color.name }
               />
             }) }
