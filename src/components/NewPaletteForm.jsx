@@ -4,6 +4,7 @@ import chroma from 'chroma-js';
 import NavBar from "./NavBar";
 import Drawer from "./Drawer";
 import UserColorBox from "./UserColorBox";
+import fs from 'fs';
 
 class NewPaletteForm extends Component {
 
@@ -11,19 +12,28 @@ class NewPaletteForm extends Component {
     super(props);
     this.state = {
       displayDrawerContents: false,
+      currentPaletteName: '',
+      currentPaletteIdName: '',
+      currentPaletteEmoji: '',
       currentColor: this.randomizeColor(true),
-      colors: []
+      colorsInUserPalette: []
     };
 
     this.toggleDrawer = this.toggleDrawer.bind(this);
     this.clearPalette = this.clearPalette.bind(this);
     this.handleColorPickerChange = this.handleColorPickerChange.bind(this);
     this.handleColorNameChange = this.handleColorNameChange.bind(this);
+    this.handlePaletteNameChange = this.handlePaletteNameChange.bind(this);
     this.randomizeColor = this.randomizeColor.bind(this);
+    this.handleCreateNewPalette = this.handleCreateNewPalette.bind(this);
+  }
+
+  toggleDrawer() {
+    this.setState({ displayDrawerContents: !this.state.displayDrawerContents })
   }
 
   clearPalette() {
-    this.setState({colors: []}, () => console.log('force update'));
+    this.setState({ colors: [] }, () => console.log('force update'));
   }
 
   handleColorPickerChange(color) {
@@ -31,12 +41,6 @@ class NewPaletteForm extends Component {
     this.setState({
       currentColor: {
         hex: color.hex,
-        rgb: {
-          r: color.rgb.r,
-          g: color.rgb.g,
-          b: color.rgb.b,
-        },
-        rgba: color.rgb,
         name
       }
     });
@@ -48,63 +52,67 @@ class NewPaletteForm extends Component {
         ...this.state.currentColor,
         name: event.target.value
       }
-    }
-    )
+    })
   }
 
-  toggleDrawer() {
-    this.setState({ displayDrawerContents: !this.state.displayDrawerContents })
-  }
-
-  randomizeColor(calledInConstructor) {
-    const randomColorHEX = chroma.random();
-    const randomColorRGBA = randomColorHEX.rgba();
-    const currentColor = {
-      hex: randomColorHEX.hex(),
-      rgb: {
-        r: randomColorRGBA[ 0 ],
-        g: randomColorRGBA[ 1 ],
-        b: randomColorRGBA[ 2 ]
-      },
-      rgba: {
-        r: randomColorRGBA[ 0 ],
-        g: randomColorRGBA[ 1 ],
-        b: randomColorRGBA[ 2 ],
-        a: randomColorRGBA[ 3 ]
-      },
-      name: calledInConstructor ? '' : this.state.currentColor.name
-    };
-
-    if(calledInConstructor) {
-     return currentColor;
-    } else {
-      this.setState({ currentColor })
-    }
+  handlePaletteNameChange(event) {
+    this.setState({currentPaletteName: event.target.value})
   }
 
   addColor(newColor) {
-    const {colors: currentColors} = this.state;
+    const { colorsInUserPalette, currentColor } = this.state;
 
     // Validate color name length
-    if(this.state.currentColor.name.length < 3 ) {
+    if (currentColor.name.length < 3) {
       return alert('Color must have a name of at least three characters.');
     }
 
     // Validate color name uniquity
-    for(let color of currentColors) {
-      if(color.name === newColor.name) return alert('Color name must be unique.');
+    for (let color of colorsInUserPalette) {
+      if (color.name === newColor.name) return alert('Color name must be unique.');
     }
 
     this.setState({
-      colors: [ ...currentColors, newColor ],
+      colorsInUserPalette: [ ...colorsInUserPalette, newColor ],
       currentColor: {
-        ...this.state.currentColor,
+        ...currentColor,
         name: ''
       }
     })
   }
 
+  randomizeColor(calledInConstructor = false) {
+    const randomColorHEX = chroma.random();
+    const randomColorRGBA = randomColorHEX.rgba();
+    const currentColor = {
+      hex: randomColorHEX.hex(),
+      name: calledInConstructor ? '' : this.state.currentColor.name
+    };
+
+    if (calledInConstructor) {
+      return currentColor;
+    } else {
+      this.setState({ currentColor })
+    }
+  }
+
+  handleCreateNewPalette() {
+
+    const { currentPaletteName, colorsInUserPalette } = this.state;
+    const currentPaletteIdName = currentPaletteName.toLowerCase().replace(' ', '-');
+
+    const newPalette = {
+      paletteName: currentPaletteName,
+      id: currentPaletteIdName,
+      emoji: '',
+      colors: colorsInUserPalette
+    };
+
+    this.props.createNewPalette(newPalette);
+  }
+
   render() {
+    const { currentColor, colorsInUserPalette, currentPaletteName, displayDrawerContents } = this.state;
     return (
       <div className='NewPaletteForm'>
         <NavBar/>
@@ -112,41 +120,55 @@ class NewPaletteForm extends Component {
 
           <Drawer
             toggleDrawer={ this.toggleDrawer }
-            displayDrawerContents={ this.state.displayDrawerContents }
+            displayDrawerContents={ displayDrawerContents }
           >
             <button
               className="NewPaletteForm__button--delete-palette"
-              onClick={this.clearPalette}
+              onClick={ this.clearPalette }
             >
               Clear Palette
             </button>
 
             <ChromePicker
-              color={ this.state.currentColor.hex }
+              color={ currentColor.hex }
               onChangeComplete={ this.handleColorPickerChange }
             />
 
             <div className="NewPaletteForm__button--container">
-              <input className='NewPaletteForm__input--text' type="text" placeholder='Color Name' value={this.state.currentColor.name} onChange={this.handleColorNameChange}/>
-                <button className="NewPaletteForm__button"
-                        onClick={ () => this.addColor(this.state.currentColor) }
-                >Add Color
-                </button>
+              <input className='NewPaletteForm__input--text' type="text"
+                     placeholder='Color Name' value={ currentColor.name }
+                     onChange={ this.handleColorNameChange }
+              />
+              <input className='NewPaletteForm__input--text' type="text"
+                     placeholder='Palette Name' value={ currentPaletteName }
+                     onChange={ this.handlePaletteNameChange }
+              />
               <button className="NewPaletteForm__button"
-                      onClick={ this.randomizeColor }>Randomize Color
+                      onClick={ () => this.addColor(currentColor) }
+              >Add Color
+              </button>
+
+              <button className="NewPaletteForm__button"
+                      onClick={ () => this.randomizeColor(false) }
+              >Randomize Color
+              </button>
+
+              <button className="NewPaletteForm__button--create-palette"
+                      onClick={this.handleCreateNewPalette}
+              >Create Palette
               </button>
             </div>
 
           </Drawer>
 
           <div className="NewPaletteForm__colors">
-            { this.state.colors.map((color) => {
+            { colorsInUserPalette.map((color) => {
               return <UserColorBox
                 key={ color.name }
                 id={ color.name }
                 background={ color.hex }
                 name={ color.name }
-              />;
+              />
             }) }
           </div>
         </div>

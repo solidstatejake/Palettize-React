@@ -5,6 +5,7 @@ import NavBar from "./NavBar";
 
 class PaletteList extends Component {
 
+
   render() {
     const { palettes } = this.props;
     const miniPalettes = palettes.map(palette => (
