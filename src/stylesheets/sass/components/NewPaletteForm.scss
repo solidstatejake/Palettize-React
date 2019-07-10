@@ -20,6 +20,15 @@
       margin:           2rem 0;
       font-size:        1.6rem;
     }
+
+    &--create-palette {
+      border:     1px solid black;
+      font-size:  1.6rem;
+      height:     8rem;
+      margin-top: 1rem;
+      width:      100%;
+    }
+
     &--container {
     }
   }
@@ -70,5 +79,6 @@
 
 .chrome-picker {
   font-family: inherit !important;
-  width:       25rem !important;
+  width:       26rem !important;
+  margin:      0 auto;
 }

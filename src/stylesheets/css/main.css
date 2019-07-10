@@ -220,8 +220,8 @@ body {
   background-color: #FFFFFF;
   display: flex;
   flex-direction: column;
-  height: 60rem;
-  width: 25rem; }
+  height: 70rem;
+  width: 38rem; }
   .Drawer__header {
     background-color: #888;
     height: 6rem;
@@ -251,6 +251,12 @@ body {
       border-bottom: 1px solid black;
       margin: 2rem 0;
       font-size: 1.6rem; }
+    .NewPaletteForm__button--create-palette {
+      border: 1px solid black;
+      font-size: 1.6rem;
+      height: 8rem;
+      margin-top: 1rem;
+      width: 100%; }
   .NewPaletteForm__input--text {
     border: none;
     border-bottom: 1px solid black;
@@ -282,4 +288,5 @@ body {
 
 .chrome-picker {
   font-family: inherit !important;
-  width: 25rem !important; }
+  width: 26rem !important;
+  margin: 0 auto; }

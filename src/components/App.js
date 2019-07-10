@@ -6,7 +6,7 @@ import { generatePalette } from "../utils/colorHelpers";
 import '../stylesheets/css/main.css';
 import PaletteList from "./PaletteList";
 import SingleColorPalette from "./SingleColorPalette";
-import NewPaletteForm from "./NewPaletteForm";
+import NewPalettePage from "./NewPalettePage";
 
 
 class App extends Component {
@@ -42,20 +42,17 @@ class App extends Component {
       <Router>
         <Switch>
           <Route
-            exact
-            path='/'
+            exact path='/'
             render={ () => <PaletteList palettes={ palettes }/> }
           />
 
           <Route
-            exact
-            path='/palette/new'
-            render={ () => <NewPaletteForm createNewPalette={this.createNewPalette}/> }
+            exact path='/palette/new'
+            render={ (routeProps) => <NewPalettePage routeProps={routeProps} createNewPalette={ this.createNewPalette }/> }
           />
 
           <Route
-            exact
-            path='/palette/:id'
+            exact path='/palette/:id'
             render={ (routeProps) => (
               <Palette
                 routeProps={ routeProps }
@@ -65,15 +62,13 @@ class App extends Component {
           />
 
           <Route
-            exact
-            path='/palette/:paletteId/:colorId'
+            exact path='/palette/:paletteId/:colorId'
             render={ (routeProps) => (
               <SingleColorPalette
                 routeProps={ routeProps }
                 palette={ generatePalette(this.findPalette(routeProps.match.params.paletteId)) }
               />
-            )
-            }
+            ) }
           />
 
         </Switch>
