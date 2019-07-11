@@ -16,7 +16,7 @@ class Drawer extends Component {
         className={`Drawer ${displayDrawerContents && 'Drawer__OPEN'}`}
       >
         <header className='Drawer__header' onClick={this.handleToggleDrawer}>
-          <span className="Drawer__header--text">Palette Designer</span>
+
         </header>
 
 

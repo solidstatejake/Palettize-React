@@ -1,4 +1,7 @@
 .PaletteList {
+  box-shadow:      5px 5px 10px black;
+  color:           black;
+
   &__container {
     align-items:           center;
     display:               grid;
@@ -19,8 +22,8 @@
   &__link {
 
     &--new-palette {
-      background-color: #555;
-      box-shadow:       none !important;
+      background-color: #3b90d5;
+      box-shadow: 0 0 1rem #3b90d5;
       border-radius:    4px;
       color:            white !important;
       cursor:           pointer;
@@ -34,8 +37,7 @@
   }
   :link,
   :visited {
-    box-shadow:      5px 5px 10px black;
-    color:           black;
-    text-decoration: none;
+   text-decoration: none;
+    color:black;
   }
 }

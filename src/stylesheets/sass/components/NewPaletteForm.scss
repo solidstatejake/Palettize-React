@@ -18,14 +18,14 @@
       background-color: #1B8F17;
       box-shadow:       0 0 5px #2BEB25;
       color:            white;
-      text-shadow:      1px 1px 7px #2BEB25;
+      text-shadow:      1px 1px 1rem #2BEB25;
     }
 
     &--open-palette-designer {
-      background-color: #777777;
-      color:            #D5D5D5;
-      text-shadow:      1px 1px 6px #BBB;
-      box-shadow:       0 0 5px #BBB;
+      background-color: #874288;
+      box-shadow: 0 0 1rem #874288;
+      color:            white;
+      text-shadow:      1px 1px 10px white;
     }
 
   }

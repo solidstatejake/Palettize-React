@@ -1,12 +1,16 @@
 .DropDown {
   background-color: #ed5858;
   border-radius:    4px;
+  box-shadow: 0 0 1rem #ed5858;
+  color: white;
   cursor:           pointer;
   font-size:        1.6rem;
   height:           4rem;
   line-height:      4rem;
   text-align:       center;
+  text-shadow: 0 0 1rem white;
   width:            20rem;
+
 
   &__menu {
     align-items:     center;

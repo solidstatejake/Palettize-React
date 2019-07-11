@@ -55,7 +55,7 @@ class SingleColorPalette extends Component {
 
     return (
       <div className='SingleColorPalette'>
-        <NavBar>
+        <NavBar modifyWidth={true}>
           <BackButton routeProps={ this.props.routeProps }/>
 
           <DropDown handleFormatChange={ this.handleFormatChange }

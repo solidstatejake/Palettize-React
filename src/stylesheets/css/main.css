@@ -137,11 +137,14 @@ body {
 .DropDown {
   background-color: #ed5858;
   border-radius: 4px;
+  box-shadow: 0 0 1rem #ed5858;
+  color: white;
   cursor: pointer;
   font-size: 1.6rem;
   height: 4rem;
   line-height: 4rem;
   text-align: center;
+  text-shadow: 0 0 1rem white;
   width: 20rem; }
   .DropDown__menu {
     align-items: center;
@@ -158,46 +161,46 @@ body {
   .DropDownItem:hover {
     background-color: orange; }
 
-.PaletteList__container {
-  align-items: center;
-  display: grid;
-  grid-gap: 2rem;
-  grid-template-columns: auto auto auto;
-  justify-content: center;
-  padding: 5rem 0; }
-  @media screen and (max-width: 940px) {
-    .PaletteList__container {
-      grid-template-columns: auto auto; } }
-  @media screen and (max-width: 620px) {
-    .PaletteList__container {
-      grid-template-columns: auto; } }
-
-.PaletteList__link--new-palette {
-  background-color: #555;
-  box-shadow: none !important;
-  border-radius: 4px;
-  color: white !important;
-  cursor: pointer;
-  font-size: 1.5rem;
-  height: 4rem;
-  width: 20rem;
-  line-height: 4rem;
-  text-align: center;
-  margin-right: 3rem; }
-
-.PaletteList :link,
-.PaletteList :visited {
+.PaletteList {
   box-shadow: 5px 5px 10px black;
-  color: black;
-  text-decoration: none; }
+  color: black; }
+  .PaletteList__container {
+    align-items: center;
+    display: grid;
+    grid-gap: 2rem;
+    grid-template-columns: auto auto auto;
+    justify-content: center;
+    padding: 5rem 0; }
+    @media screen and (max-width: 940px) {
+      .PaletteList__container {
+        grid-template-columns: auto auto; } }
+    @media screen and (max-width: 620px) {
+      .PaletteList__container {
+        grid-template-columns: auto; } }
+  .PaletteList__link--new-palette {
+    background-color: #3b90d5;
+    box-shadow: 0 0 1rem #3b90d5;
+    border-radius: 4px;
+    color: white !important;
+    cursor: pointer;
+    font-size: 1.5rem;
+    height: 4rem;
+    width: 20rem;
+    line-height: 4rem;
+    text-align: center;
+    margin-right: 3rem; }
+  .PaletteList :link,
+  .PaletteList :visited {
+    text-decoration: none;
+    color: black; }
 
 .SingleColorPalette {
   display: grid;
-  grid-template-rows: 13rem auto; }
+  grid-template-rows: auto auto; }
   .SingleColorPalette__header {
     color: white;
     font-size: 1.6rem;
-    margin-bottom: 1rem;
+    margin: 2rem;
     text-align: center; }
   .SingleColorPalette__colors {
     align-content: center;
@@ -229,7 +232,7 @@ body {
   width: 100%; }
   .Drawer__header {
     background-color: #888;
-    height: 6rem;
+    height: 2rem;
     text-align: center;
     line-height: 6rem;
     font-size: 1.6rem;
@@ -276,8 +279,11 @@ body {
       background-color: #E72D2D;
       border: none;
       border-radius: 4px;
+      box-shadow: 0 0 1rem #E72D2D;
+      color: white;
       font-size: 1.6rem;
       height: 100%;
+      text-shadow: 0 0 1rem white;
       width: 23rem; }
     .Drawer__button--add-color {
       border: none;
@@ -311,13 +317,13 @@ body {
   background-color: #1B8F17;
   box-shadow: 0 0 5px #2BEB25;
   color: white;
-  text-shadow: 1px 1px 7px #2BEB25; }
+  text-shadow: 1px 1px 1rem #2BEB25; }
 
 .NewPaletteForm__button--open-palette-designer {
-  background-color: #777777;
-  color: #D5D5D5;
-  text-shadow: 1px 1px 6px #BBB;
-  box-shadow: 0 0 5px #BBB; }
+  background-color: #874288;
+  box-shadow: 0 0 1rem #874288;
+  color: white;
+  text-shadow: 1px 1px 10px white; }
 
 .NewPaletteForm__input--palette-name {
   background: #444444;

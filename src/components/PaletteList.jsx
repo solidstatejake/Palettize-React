@@ -7,17 +7,22 @@ class PaletteList extends Component {
 
 
   render() {
-    const { palettes } = this.props;
+    const { palettes, routeProps, palettesToKeep } = this.props;
     const miniPalettes = palettes.map(palette => (
-      <Link to={ `/palette/${palette.id}` }>
-        <MiniPalette key={ palette.id } { ...palette }/>
-      </Link>
+        <MiniPalette
+          key={ palette.id }
+          id={palette.id}
+          routeProps={routeProps}
+          palettesToKeep={palettesToKeep}
+          deleteMiniPalette={this.props.deleteMiniPalette}
+          { ...palette }
+        />
     ));
 
     return (
       <div className='PaletteList'>
 
-        <NavBar>
+        <NavBar applyLeftMargin={true}>
           <Link className='PaletteList__link--new-palette' to='/palette/new'>
             <div>
               Create New Palette

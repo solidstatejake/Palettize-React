@@ -12,13 +12,14 @@ class App extends Component {
   constructor(props) {
     super(props);
     const localStoragePalettes = JSON.parse(window.localStorage.getItem("palettes"));
-    console.log(localStoragePalettes);
     const palettesToDisplay = localStoragePalettes || seedColors;
-    this.state = {
-      palettes: [...palettesToDisplay]
-    };
 
+    this.state = {
+      palettes: [ ...palettesToDisplay ],
+      palettesToKeep: seedColors.map(palette => palette.id)
+    };
     this.createNewPalette = this.createNewPalette.bind(this);
+    this.deleteMiniPalette = this.deleteMiniPalette.bind(this);
   }
 
   findPalette(id) {
@@ -36,20 +37,30 @@ class App extends Component {
     );
   }
 
+  deleteMiniPalette(id) {
+    const filteredPalettes = this.state.palettes.filter((palette) => {
+      return palette.id !== id
+    });
+
+    this.setState({ palettes: filteredPalettes})
+  }
 
   syncLocalStorage() {
     window.localStorage.setItem("palettes", JSON.stringify(this.state.palettes));
   }
 
   render() {
-    const { palettes } = this.state;
+    const { palettes, palettesToKeep } = this.state;
 
     return (
       <Router>
         <Switch>
           <Route
             exact path='/'
-            render={ () => <PaletteList palettes={ palettes }/> }
+            render={ (routeProps) => <PaletteList palettes={ palettes }
+                                                  routeProps={routeProps}
+                                                  palettesToKeep={palettesToKeep}
+                                                  deleteMiniPalette={ this.deleteMiniPalette }/> }
           />
 
           <Route
