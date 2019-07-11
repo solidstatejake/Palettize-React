@@ -9,15 +9,15 @@ class PaletteList extends Component {
   render() {
     const { palettes } = this.props;
     const miniPalettes = palettes.map(palette => (
-        <Link to={ `/palette/${palette.id}` }>
-          <MiniPalette key={palette.id} { ...palette }/>
-        </Link>
-      ));
+      <Link to={ `/palette/${palette.id}` }>
+        <MiniPalette key={ palette.id } { ...palette }/>
+      </Link>
+    ));
 
     return (
       <div className='PaletteList'>
 
-        <NavBar >
+        <NavBar>
           <Link className='PaletteList__link--new-palette' to='/palette/new'>
             <div>
               Create New Palette

@@ -5,7 +5,7 @@ class NavBar extends Component {
 
   render() {
     return (
-      <header className='NavBar'>
+      <nav className='NavBar'>
         <div className="NavBar__container">
           <div className="NavBar__logo--container">
             <Link to='/'>
@@ -20,7 +20,7 @@ class NavBar extends Component {
           { this.props.children }
 
         </div>
-      </header>
+      </nav>
     );
   }
 }

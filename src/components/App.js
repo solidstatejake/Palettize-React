@@ -11,10 +11,10 @@ import NewPalettePage from "./NewPalettePage";
 class App extends Component {
   constructor(props) {
     super(props);
+    const localStoragePalettes = JSON.parse(window.localStorage.getItem("palettes"));
+    const palletesToDisplay = localStoragePalettes || seedColors;
     this.state = {
-      palettes: [
-        ...seedColors
-      ]
+      palettes: [...palletesToDisplay]
     };
 
     this.createNewPalette = this.createNewPalette.bind(this);
@@ -29,10 +29,16 @@ class App extends Component {
   createNewPalette(newPalette) {
     const { palettes } = this.state;
     this.setState({
-      palettes: [ ...palettes, newPalette ]
-    })
+        palettes: [ ...palettes, newPalette ]
+      },
+      this.syncLocalStorage
+    );
   }
 
+
+  syncLocalStorage() {
+    window.localStorage.setItem("palettes", JSON.stringify(this.state.palettes));
+  }
 
   render() {
     const { palettes } = this.state;

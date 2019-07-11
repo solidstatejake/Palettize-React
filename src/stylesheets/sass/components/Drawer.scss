@@ -84,12 +84,13 @@
     }
 
     &--randomize-color {
-      grid-area:        randomizeColor;
       border:           none;
-      background-color: burlywood;
+      background-color: #222;
       border-radius:    2px;
-      height:           5rem;
+      color:            white;
       font-size:        1.3rem;
+      grid-area:        randomizeColor;
+      height:           5rem;
     }
   }
 

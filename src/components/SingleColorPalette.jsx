@@ -43,7 +43,6 @@ class SingleColorPalette extends Component {
   render() {
     const { paletteName, emoji } = this.props.palette;
     const singleColorPalette = this.grabShades();
-    const colorName = singleColorPalette[ 0 ].name.replace('50', '');
     const singleColorBoxes = singleColorPalette.map((colorObject) => {
       const backgroundFormat = this.determineBackgroundFormat(colorObject);
       return <ColorBox
@@ -65,8 +64,6 @@ class SingleColorPalette extends Component {
 
         <header className='SingleColorPalette__header'>
           { paletteName } { emoji }
-          <br/>
-          { colorName }
         </header>
 
         <div className="SingleColorPalette__body">

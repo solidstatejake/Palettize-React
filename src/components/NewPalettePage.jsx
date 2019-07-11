@@ -20,9 +20,9 @@ class NewPalettePage extends Component {
 
     this.toggleDrawer = this.toggleDrawer.bind(this);
     this.clearPalette = this.clearPalette.bind(this);
-    this.handleColorPickerChange = this.handleColorPickerChange.bind(this);
-    this.handleColorNameChange = this.handleColorNameChange.bind(this);
-    this.handlePaletteNameChange = this.handlePaletteNameChange.bind(this);
+    this.changeColorPicker = this.changeColorPicker.bind(this);
+    this.changeCurrentColorName = this.changeCurrentColorName.bind(this);
+    this.changeCurrentPaletteName = this.changeCurrentPaletteName.bind(this);
     this.randomizeColor = this.randomizeColor.bind(this);
     this.handleCreateNewPalette = this.handleCreateNewPalette.bind(this);
     this.deleteUserColorBox = this.deleteUserColorBox.bind(this);
@@ -36,7 +36,7 @@ class NewPalettePage extends Component {
     this.setState({ colorsInUserPalette: [] }, () => console.log('force update'));
   }
 
-  handleColorPickerChange(color) {
+  changeColorPicker(color) {
     const name = this.state.currentColor.name;
     this.setState({
       currentColor: {
@@ -46,7 +46,7 @@ class NewPalettePage extends Component {
     });
   }
 
-  handleColorNameChange(event) {
+  changeCurrentColorName(event) {
     this.setState({
       currentColor: {
         ...this.state.currentColor,
@@ -55,7 +55,7 @@ class NewPalettePage extends Component {
     })
   }
 
-  handlePaletteNameChange(event) {
+  changeCurrentPaletteName(event) {
     this.setState({ currentPaletteName: event.target.value })
   }
 
@@ -144,7 +144,7 @@ class NewPalettePage extends Component {
 
           <input className='NewPaletteForm__input--palette-name' type="text"
                  placeholder='Palette Name' value={ currentPaletteName }
-                 onChange={ this.handlePaletteNameChange }/>
+                 onChange={ this.changeCurrentPaletteName }/>
 
           <button className="NewPaletteForm__button--create-palette"
                   onClick={ this.handleCreateNewPalette }>
@@ -157,14 +157,14 @@ class NewPalettePage extends Component {
 
           <Drawer displayDrawerContents={ displayDrawerContents }>
             <ChromePicker color={ currentColor.color }
-                          onChangeComplete={ this.handleColorPickerChange }/>
+                          onChangeComplete={ this.changeColorPicker }/>
 
             <div className='Drawer__container--form'>
 
               <div className="Drawer__button--container">
                 <input className='Drawer__input' type="text"
                        placeholder='Color Name' value={ currentColor.name }
-                       onChange={ this.handleColorNameChange }/>
+                       onChange={ this.changeCurrentColorName }/>
 
                 <button className="Drawer__button--add-color"
                         onClick={ () => this.addColor(currentColor) }>
