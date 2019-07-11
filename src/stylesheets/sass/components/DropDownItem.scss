@@ -1,11 +1,6 @@
 .DropDownItem {
   background: #fde830;
   width: 18rem;
-  z-index: 1;
-
-  &:not(:last-child) {
-    border-bottom: 1px solid gray;
-  }
 
   &:hover {
     background-color: orange;

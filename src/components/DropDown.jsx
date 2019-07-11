@@ -23,6 +23,7 @@ class DropDown extends Component {
 
   render() {
     const {displayedFormat} = this.props;
+    const {displayMenu} = this.state;
     const formatTypes = [ 'HEX', 'RGB', 'RGBA' ];
     const dropDownItems = formatTypes.map((type) => {
       return <DropDownItem
@@ -34,12 +35,15 @@ class DropDown extends Component {
     });
     return (
       <div className="DropDown">
-        <div className="DropDown__text" onClick={ this.displayMenu }>Color Format {displayedFormat}</div>
-        { this.state.displayMenu &&
-        <div className="DropDown__menu">
+
+        <div className="DropDown__text"
+             onClick={ this.displayMenu }>
+          Color Format {displayedFormat}
+        </div>
+        <div className={`DropDown__menu ${displayMenu && 'DropDown__menu--active'}`}>
           { dropDownItems }
         </div>
-        }
+
       </div>
     );
   }

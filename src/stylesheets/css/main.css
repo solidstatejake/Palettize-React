@@ -41,6 +41,10 @@ body {
     align-items: center;
     width: 100rem;
     justify-content: space-between; }
+    @media screen and (max-width: 620px) {
+      .NavBar__container {
+        min-width: 40rem;
+        width: 100vw; } }
   .NavBar__logo--container {
     font-size: 3.5rem;
     width: 10rem; }
@@ -135,9 +139,9 @@ body {
       z-index: 1001; }
 
 .DropDown {
-  background-color: #ed5858;
+  background-color: #ED5858;
   border-radius: 4px;
-  box-shadow: 0 0 1rem #ed5858;
+  box-shadow: 0 0 1rem #ED5858;
   color: white;
   cursor: pointer;
   font-size: 1.6rem;
@@ -146,18 +150,26 @@ body {
   text-align: center;
   text-shadow: 0 0 1rem white;
   width: 20rem; }
+  .DropDown__text {
+    z-index: 2; }
   .DropDown__menu {
     align-items: center;
     display: flex;
-    flex-direction: column;
-    justify-content: center; }
+    flex-direction: row;
+    justify-content: center;
+    position: relative;
+    top: -4rem;
+    transition: top 0.3s, z-index 0.1s;
+    z-index: -1; }
+    .DropDown__menu .DropDownItem {
+      transition: opacity 0.5s cubic-bezier(0, -0.3); }
+    .DropDown__menu--active {
+      top: 0;
+      z-index: 1; }
 
 .DropDownItem {
   background: #fde830;
-  width: 18rem;
-  z-index: 1; }
-  .DropDownItem:not(:last-child) {
-    border-bottom: 1px solid gray; }
+  width: 18rem; }
   .DropDownItem:hover {
     background-color: orange; }
 
@@ -176,7 +188,10 @@ body {
         grid-template-columns: auto auto; } }
     @media screen and (max-width: 620px) {
       .PaletteList__container {
-        grid-template-columns: auto; } }
+        display: flex;
+        flex-direction: column;
+        grid-gap: 0;
+        padding: 0; } }
   .PaletteList__link--new-palette {
     background-color: #3b90d5;
     box-shadow: 0 0 1rem #3b90d5;
@@ -189,6 +204,9 @@ body {
     line-height: 4rem;
     text-align: center;
     margin-right: 3rem; }
+    @media screen and (max-width: 620px) {
+      .PaletteList__link--new-palette {
+        width: 15rem; } }
   .PaletteList :link,
   .PaletteList :visited {
     text-decoration: none;

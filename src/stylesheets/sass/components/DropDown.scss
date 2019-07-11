@@ -1,21 +1,42 @@
 .DropDown {
-  background-color: #ed5858;
+  background-color: #ED5858;
   border-radius:    4px;
-  box-shadow: 0 0 1rem #ed5858;
-  color: white;
+  box-shadow:       0 0 1rem #ED5858;
+  color:            white;
   cursor:           pointer;
   font-size:        1.6rem;
   height:           4rem;
   line-height:      4rem;
   text-align:       center;
-  text-shadow: 0 0 1rem white;
+  text-shadow:      0 0 1rem white;
   width:            20rem;
 
+  &__text {
+    z-index: 2;
+  }
 
   &__menu {
     align-items:     center;
     display:         flex;
-    flex-direction:  column;
+    flex-direction:  row;
     justify-content: center;
+    position:        relative;
+    top:             -4rem;
+    transition: top 0.3s, z-index 0.1s;
+    z-index: -1;
+
+    .DropDownItem {
+      //opacity: 0;
+      transition: opacity 0.5s cubic-bezier(0, -.3);
+    }
+
+    &--active {
+      top: 0;
+      z-index: 1;
+
+      .DropDownItem {
+        //opacity: 1;
+      }
+    }
   }
 }

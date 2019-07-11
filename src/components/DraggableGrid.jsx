@@ -2,12 +2,16 @@ import React from 'react';
 import { SortableContainer } from 'react-sortable-hoc';
 import UserColorBox from './UserColorBox';
 
-function DraggableGrid({ colorsInUserPalette, deleteUserColorBox }) {
+function DraggableGrid({ displayDrawerContents, colorsInUserPalette, deleteUserColorBox }) {
+
+    console.log(displayDrawerContents);
   return (
-    <div className="NewPaletteForm__colors">
+    <div className="NewPaletteForm__colors"
+         style={ displayDrawerContents ? { height: "56rem" } : {} }
+    >
       { colorsInUserPalette.map((color, index) => {
         return <UserColorBox
-          index={index}
+          index={ index }
           key={ color.name }
           id={ color.name }
           background={ color.color }

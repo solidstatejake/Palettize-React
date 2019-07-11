@@ -167,6 +167,7 @@ class NewPalettePage extends Component {
                        onChange={ this.changeCurrentColorName }/>
 
                 <button className="Drawer__button--add-color"
+                        style={ { background: currentColor.color } }
                         onClick={ () => this.addColor(currentColor) }>
                   Add Color
                 </button>
@@ -187,6 +188,7 @@ class NewPalettePage extends Component {
 
 
           <DraggableGrid
+            displayDrawerContents={ displayDrawerContents }
             colorsInUserPalette={ colorsInUserPalette }
             deleteUserColorBox={ this.deleteUserColorBox }
             axis='xy'

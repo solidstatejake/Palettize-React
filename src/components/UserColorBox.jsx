@@ -15,6 +15,14 @@ const styles = {
     textTransform: 'uppercase',
     width: '20rem',
 
+    '&:active': {
+        cursor: 'move'
+    },
+
+    '&:focus-within': {
+      cursor: 'grabbing'
+    },
+
     '& span': {
       gridArea: 'title',
       marginLeft: '1rem'
@@ -40,13 +48,15 @@ const styles = {
 
 function UserColorBox(props) {
 
-  const { name, background, classes } = props;
+  const { name, background, classes, deleteUserColorBox } = props;
   return (
-    <div className={ classes.root } style={ { background } }>
+    <div className={ classes.root }
+         style={ { background } }
+    >
 
       <span>{ name }</span>
 
-      <div onClick={props.deleteUserColorBox}>
+      <div onClick={deleteUserColorBox}>
         <i className='icon-trash'></i>
       </div>
 
