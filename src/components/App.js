@@ -12,9 +12,10 @@ class App extends Component {
   constructor(props) {
     super(props);
     const localStoragePalettes = JSON.parse(window.localStorage.getItem("palettes"));
-    const palletesToDisplay = localStoragePalettes || seedColors;
+    console.log(localStoragePalettes);
+    const palettesToDisplay = localStoragePalettes || seedColors;
     this.state = {
-      palettes: [...palletesToDisplay]
+      palettes: [...palettesToDisplay]
     };
 
     this.createNewPalette = this.createNewPalette.bind(this);
