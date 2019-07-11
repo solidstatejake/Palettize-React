@@ -12,6 +12,12 @@
     align-items:     center;
     width:           100rem;
     justify-content: space-between;
+
+    @media screen and (max-width: 620px) {
+      min-width: 40rem;
+      width:     100vw;
+    }
+
   }
 
   &__logo {

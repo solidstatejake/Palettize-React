@@ -13,8 +13,12 @@
     @media screen and (max-width: 940px) {
       grid-template-columns: auto auto;
     }
+
     @media screen and (max-width: 620px) {
-      grid-template-columns: auto;
+      display: flex;
+      flex-direction: column;
+      grid-gap: 0;
+      padding: 0;
     }
 
   }
@@ -33,6 +37,10 @@
       line-height:      4rem;
       text-align:       center;
       margin-right:     3rem;
+
+      @media screen and (max-width: 620px) {
+        width: 15rem;
+      }
     }
   }
   :link,

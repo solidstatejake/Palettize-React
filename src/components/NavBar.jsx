@@ -38,9 +38,3 @@ class NavBar extends Component {
 }
 
 export default NavBar;
-/*
-margin-left 3rem on homepage
-nothing on create new palette page
-nothing on /palette page
-width: 20rem on shades page
- */
