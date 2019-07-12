@@ -316,7 +316,7 @@ body {
       background-color: #222;
       border-radius: 2px;
       color: white;
-      cursor: pointer;
+      cursor: help;
       font-size: 1.3rem;
       grid-area: randomizeColor;
       height: 5rem; }
@@ -359,8 +359,8 @@ body {
   text-shadow: 1px 1px 1rem #2BEB25; }
 
 .NewPaletteForm__button--open-palette-designer {
-  background-color: #874288;
-  box-shadow: 0 0 1rem #874288;
+  background-color: #878789;
+  box-shadow: 0 0 10px #878789;
   color: white;
   text-shadow: 1px 1px 10px white; }
 

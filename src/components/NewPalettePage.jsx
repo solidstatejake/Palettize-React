@@ -167,7 +167,7 @@ class NewPalettePage extends Component {
                        onChange={ this.changeCurrentColorName }/>
 
                 <button className="Drawer__button--add-color"
-                        style={ { background: currentColor.color } }
+                        style={ { background: currentColor.color, boxShadow: `0 0 10px ${currentColor.color}` } }
                         onClick={ () => this.addColor(currentColor) }>
                   Add Color
                 </button>
