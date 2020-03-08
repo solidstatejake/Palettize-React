@@ -1,25 +1,27 @@
-import React, { Component } from 'react';
-import { Link } from "react-router-dom";
+import React, { Component } from 'react'
+import { Link }             from 'react-router-dom'
+
 
 class Logo extends Component {
-  constructor(props) {
-      super(props);
-      this.state = {
-        randomColor: `rgb(${ Math.random() * 255 }, ${ Math.random() * 255 }, ${ Math.random() * 255 })`
-      };
+  constructor (props) {
+    super(props)
+    this.state = {
+      randomColor:
+        `rgb(${ Math.random() * 255 }, ${ Math.random() * 255 }, ${ Math.random() * 255 })`
+    }
   }
 
 
-  render() {
-    const {randomColor} = this.state;
-    const { applyLeftMargin, modifyWidth } = this.props;
+  render () {
+    const { randomColor }                  = this.state
+    const { applyLeftMargin, modifyWidth } = this.props
 
-    let headerStyle;
+    let headerStyle
 
     if (applyLeftMargin)
-      headerStyle = { marginLeft: '3rem' };
+      headerStyle = { marginLeft: '3rem' }
     else if (modifyWidth)
-      headerStyle = { width: '20rem', textAlign: 'center' };
+      headerStyle = { width: '20rem', textAlign: 'center' }
 
     return (
       <div className="NavBar__logo--container"
@@ -33,8 +35,8 @@ class Logo extends Component {
           </div>
         </Link>
       </div>
-    );
+    )
   }
 }
 
-export default Logo;
+export default Logo

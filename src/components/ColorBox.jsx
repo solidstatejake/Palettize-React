@@ -26,7 +26,8 @@ class ColorBox extends Component {
         <div className="ColorBox" style={ { background } }>
 
           <div className={ `ColorBox__overlay ${copied && 'ColorBox__active'}` }
-               style={ { background } }>
+               style={ { background } }
+          >
 
             <div
               className={ `ColorBox__active--message ${copied && 'ColorBox__active--message-active'}` }>
@@ -45,7 +46,8 @@ class ColorBox extends Component {
             </span>
 
           { this.props.displayShadesButton &&
-          <Link to={ `/palette/${paletteId}/${id}` } onClick={ e => e.stopPropagation() }
+          <Link to={ `/palette/${paletteId}/${id}` }
+                onClick={ e => e.stopPropagation() }
                 className='ColorBox__button--see-more'>
             <span>Shades</span>
           </Link>

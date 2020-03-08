@@ -57,8 +57,7 @@ class Palette extends Component {
 
     return (
       <div className="Palette">
-        <NavBar
-        >
+        <NavBar>
           <BackButton routeProps={ this.props.routeProps }/>
           <div className="NavBar__slider">
             <SliderWithTooltip

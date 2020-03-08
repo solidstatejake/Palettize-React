@@ -79,6 +79,7 @@ class NewPalettePage extends Component {
     })
   }
 
+  /* Used to toggle whether logo changes color on each re-render. */
   randomizeColor(calledInConstructor = false) {
     const randomColor = chroma.random();
     const currentColor = {
