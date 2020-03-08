@@ -1,52 +1,48 @@
-import React, { Component } from 'react';
-import DropDownItem from "./DropDownItem";
+import React, { useState } from 'react'
+import DropDownItem        from './DropDownItem'
 
-class DropDown extends Component {
-  constructor(props) {
-    super(props);
+/**
+ * @param handleFormatChange
+ * Passed from <SingleColorPalette/> and <Palette/>. Handles update of the
+ * format (i.e. HEX, RGB, RGBA) which colors are copied in.
+ * @param displayedFormat
+ * The current format in which colors are begin displayed in <SingleColorPalette/> and
+ * <Palette/>.
+ */
+const DropDown = ({ handleFormatChange, displayedFormat }) => {
 
-    this.state = {
-      displayMenu: false
-    };
+  const [ displayMenu, toggleDisplayMenu ] = useState(false)
 
-    this.displayMenu = this.displayMenu.bind(this);
-    this.changeFormat = this.changeFormat.bind(this);
+
+  const changeFormat = (formatValue) => {
+    handleFormatChange(formatValue)
   }
 
-  displayMenu() {
-    this.setState({ displayMenu: !this.state.displayMenu })
-  }
+  const formatTypes   = [ 'HEX', 'RGB', 'RGBA' ]
+  const dropDownItems = formatTypes.map((type) =>
+    <DropDownItem
+      formatType={ type }
+      changeFormat={ changeFormat }
+      displayMenu={ displayMenu }
+      toggleDisplayMenu={ toggleDisplayMenu }
+      displayedFormat={ displayedFormat }
+    />
+  )
 
-  changeFormat(formatValue) {
-    this.props.handleFormatChange(formatValue);
-  }
+  return (
+    <div className="DropDown">
 
-  render() {
-    const {displayedFormat} = this.props;
-    const {displayMenu} = this.state;
-    const formatTypes = [ 'HEX', 'RGB', 'RGBA' ];
-    const dropDownItems = formatTypes.map((type) => {
-      return <DropDownItem
-        formatType={ type }
-        changeFormat={ this.changeFormat }
-        displayMenu={ this.displayMenu }
-        displayedFormat={ displayedFormat }
-      />
-    });
-    return (
-      <div className="DropDown">
-
-        <div className="DropDown__text"
-             onClick={ this.displayMenu }>
-          Color Format {displayedFormat}
-        </div>
-        <div className={`DropDown__menu ${displayMenu && 'DropDown__menu--active'}`}>
-          { dropDownItems }
-        </div>
-
+      <div className="DropDown__text"
+           onClick={ () => toggleDisplayMenu(!displayMenu) }>
+        Color Format { displayedFormat }
       </div>
-    );
-  }
+      <div className={ `DropDown__menu ${ displayMenu && 'DropDown__menu--active' }` }>
+        { dropDownItems }
+      </div>
+
+    </div>
+  )
 }
 
-export default DropDown;
+
+export default DropDown
