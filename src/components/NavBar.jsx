@@ -1,25 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react'
 // import { Link }             from 'react-router-dom';
-import Logo                 from "./Logo";
-
-class NavBar extends Component {
+import Logo  from './Logo'
 
 
-  render() {
-    const { applyLeftMargin, modifyWidth } = this.props;
+const NavBar = ({ children, applyLeftMargin, modifyWidth }) => <nav className='NavBar'>
+  <div className="NavBar__container">
+    <Logo applyLeftMargin={ applyLeftMargin } modifyWidth={ modifyWidth }/>
+    { children }
+  </div>
+</nav>
 
 
-    return (
-      <nav className='NavBar'>
-        <div className="NavBar__container">
-          <Logo applyLeftMargin={applyLeftMargin} modifyWidth={modifyWidth}/>
-
-          { this.props.children }
-
-        </div>
-      </nav>
-    );
-  }
-}
-
-export default NavBar;
+export default NavBar
