@@ -1,81 +1,72 @@
-import React, { Component } from 'react';
-import ColorBox             from "./ColorBox";
-import NavBar               from "./NavBar";
-import BackButton           from "./BackButton";
-import DropDown             from "./DropDown";
+import React, { useState } from 'react'
+import ColorBox            from './ColorBox'
+import NavBar              from './NavBar'
+import BackButton          from './BackButton'
+import DropDown            from './DropDown'
 
-class SingleColorPalette extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { displayedFormat: 'HEX' };
 
-    this.grabShades = this.grabShades.bind(this);
-    this.handleFormatChange = this.handleFormatChange.bind(this);
+const SingleColorPalette = (props) => {
 
-  }
+  const [ displayedFormat, mutateDisplayedFormat ] = useState('HEX')
 
-  grabShades() {
-    const { colors } = this.props.palette;
+  const grabShades = () => {
+    const { colors } = props.palette
     return Object.keys(colors).map(key => {
       return colors[ key ].find(color => {
-        return color.id === this.props.routeProps.match.params.colorId;
+        return color.id === props.routeProps.match.params.colorId
       })
     })
   }
 
-  handleFormatChange(formatValue) {
-    this.setState({ displayedFormat: formatValue })
-  }
+  const handleFormatChange = (formatValue) => mutateDisplayedFormat(formatValue)
 
-  determineBackgroundFormat(colorObject) {
-    switch (this.state.displayedFormat) {
-      case "HEX":
-        return colorObject.hex;
-      case "RGB":
-        return colorObject.rgb;
-      case "RGBA":
-        return colorObject.rgba;
+
+  const determineBackgroundFormat = (colorObject) => {
+    switch (displayedFormat) {
+      case 'HEX':
+        return colorObject.hex
+      case 'RGB':
+        return colorObject.rgb
+      case 'RGBA':
+        return colorObject.rgba
       default:
-        return colorObject.hex;
+        return colorObject.hex
     }
   }
 
-  render() {
-    const { paletteName, emoji } = this.props.palette;
-    const singleColorPalette = this.grabShades();
-    const singleColorBoxes = singleColorPalette.map((colorObject) => {
-      const backgroundFormat = this.determineBackgroundFormat(colorObject);
-      return <ColorBox
-        key={ colorObject.hex }
-        id={ colorObject.id }
-        background={ backgroundFormat }
-        name={ colorObject.name }
-      />;
-    });
 
-    return (
-      <div className='SingleColorPalette'>
-        <NavBar modifyWidth={true}>
-          <BackButton routeProps={ this.props.routeProps }/>
+  const { paletteName, emoji } = props.palette
+  const singleColorPalette     = grabShades()
+  const singleColorBoxes       = singleColorPalette.map((colorObject) => {
+    return <ColorBox
+      key={ colorObject.hex }
+      id={ colorObject.id }
+      background={ determineBackgroundFormat(colorObject) }
+      name={ colorObject.name }
+    />
+  })
 
-          <DropDown handleFormatChange={ this.handleFormatChange }
-                    displayedFormat={ this.state.displayedFormat }/>
-        </NavBar>
+  return (
+    <div className='SingleColorPalette'>
+      <NavBar modifyWidth={ true }>
+        <BackButton routeProps={ props.routeProps }/>
 
-        <header className='SingleColorPalette__header'>
-          { paletteName } { emoji }
-        </header>
+        <DropDown handleFormatChange={ handleFormatChange }
+                  displayedFormat={ displayedFormat }/>
+      </NavBar>
 
-        <div className="SingleColorPalette__body">
+      <header className='SingleColorPalette__header'>
+        { paletteName } { emoji }
+      </header>
 
-          <div className='SingleColorPalette__colors'>
-
-            { singleColorBoxes }
-          </div>
+      <div className="SingleColorPalette__body">
+        <div className='SingleColorPalette__colors'>
+          { singleColorBoxes }
         </div>
       </div>
-    );
-  }
+    </div>
+  )
 }
 
-export default SingleColorPalette;
+
+export default SingleColorPalette
