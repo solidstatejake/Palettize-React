@@ -1,5 +1,6 @@
 import React from 'react'
 
+
 /**
  This component is thus far used for the |HEX| |RGB| |RGBA| buttons in the DropDown
  comp found in pages where one views palettes.

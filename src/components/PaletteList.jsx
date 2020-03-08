@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
-import { Link }             from 'react-router-dom'
-import MiniPalette          from './MiniPalette'
-import NavBar               from './NavBar'
+import React       from 'react'
+import { Link }    from 'react-router-dom'
+import MiniPalette from './MiniPalette'
+import NavBar      from './NavBar'
 
 
 const PaletteList = ({ deleteMiniPalette, palettes, palettesToKeep, routeProps }) => {
