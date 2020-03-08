@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { ChromePicker } from 'react-color';
-import chroma from 'chroma-js';
-import NavBar from "./NavBar";
-import Drawer from "./Drawer";
-import DraggableGrid from "./DraggableGrid";
-import { arrayMove } from 'react-sortable-hoc'
+import { ChromePicker }     from 'react-color';
+import chroma               from 'chroma-js';
+import NavBar               from "./NavBar";
+import Drawer               from "./Drawer";
+import DraggableGrid        from "./DraggableGrid";
+import { arrayMove }        from 'react-sortable-hoc'
 
 class NewPalettePage extends Component {
 

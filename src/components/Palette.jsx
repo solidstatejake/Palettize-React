@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import ColorBox from "./ColorBox";
-import NavBar from "./NavBar";
-import BackButton from "./BackButton";
-import DropDown from "./DropDown";
+import React, { Component }                from 'react';
+import ColorBox                            from "./ColorBox";
+import NavBar                              from "./NavBar";
+import BackButton                          from "./BackButton";
+import DropDown                            from "./DropDown";
 import Slider, { createSliderWithTooltip } from 'rc-slider';
 import 'rc-slider/assets/index.css';
 

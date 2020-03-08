@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import MiniPalette from "./MiniPalette";
-import NavBar from "./NavBar";
+import { Link }             from 'react-router-dom';
+import MiniPalette          from "./MiniPalette";
+import NavBar               from "./NavBar";
 
 class PaletteList extends Component {
 
