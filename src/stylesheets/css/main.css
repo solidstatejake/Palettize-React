@@ -138,6 +138,14 @@ body {
       transform: translate(-50%, -50%);
       z-index: 1001; }
 
+@keyframes fadeDown {
+  0% {
+    opacity: 0;
+    z-index: -1; }
+  100% {
+    opacity: 1;
+    z-index: 1; } }
+
 .DropDown {
   background-color: #ED5858;
   border-radius: 4px;
@@ -154,18 +162,20 @@ body {
     z-index: 2; }
   .DropDown__menu {
     align-items: center;
-    display: flex;
+    display: none;
     flex-direction: row;
     justify-content: center;
     position: relative;
     top: -4rem;
-    transition: top 0.3s, z-index 0.1s;
-    z-index: -1; }
+    transition: top 0.3s, z-index 0.1s; }
     .DropDown__menu .DropDownItem {
       transition: opacity 0.5s cubic-bezier(0, -0.3); }
     .DropDown__menu--active {
+      display: flex;
       top: 0;
       z-index: 1; }
+      .DropDown__menu--active .DropDownItem {
+        animation: fadeDown 0.2s ease-in; }
 
 .DropDownItem {
   background: #fde830;

@@ -18,6 +18,7 @@ class App extends Component {
       palettes: [ ...palettesToDisplay ],
       palettesToKeep: seedColors.map(palette => palette.id)
     };
+
     this.createNewPalette = this.createNewPalette.bind(this);
     this.deleteMiniPalette = this.deleteMiniPalette.bind(this);
   }

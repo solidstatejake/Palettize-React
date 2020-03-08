@@ -1,3 +1,17 @@
+@keyframes fadeDown {
+  0% {
+    opacity: 0;
+    //transform: translate(0, 0);
+    z-index: -1;
+  }
+  100% {
+    opacity: 1;
+    //transform: translate(0, 4rem);
+    z-index: 1;
+  }
+}
+
+
 .DropDown {
   background-color: #ED5858;
   border-radius:    4px;
@@ -17,26 +31,29 @@
 
   &__menu {
     align-items:     center;
-    display:         flex;
+    display:         none;
     flex-direction:  row;
     justify-content: center;
     position:        relative;
     top:             -4rem;
     transition: top 0.3s, z-index 0.1s;
-    z-index: -1;
 
     .DropDownItem {
-      //opacity: 0;
+
       transition: opacity 0.5s cubic-bezier(0, -.3);
     }
 
     &--active {
+      display:flex;
       top: 0;
       z-index: 1;
 
+
       .DropDownItem {
-        //opacity: 1;
+        animation: fadeDown 0.2s ease-in;
+
       }
     }
   }
 }
+
