@@ -1,26 +1,19 @@
-import React, { Component } from 'react';
+import React from 'react'
 
-class BackButton extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-    this.handleGoBack = this.handleGoBack.bind(this);
+
+const BackButton = props => {
+
+  const handleGoBack = () => {
+    const { history } = props.routeProps
+    history.goBack()
   }
 
-  handleGoBack() {
-    const { history } = this.props.routeProps;
-    history.goBack();
-  }
-
-  render() {
-    return (
-      <button className='BackButton' onClick={ () => this.handleGoBack() }>
+  return (
+    <button className='BackButton' onClick={ () => handleGoBack() }>
         <span className='BackButton__text'>
           Go Back
         </span>
-      </button>
-    );
-  }
+    </button> )
 }
 
-export default BackButton;
+export default BackButton
